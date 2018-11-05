@@ -4,7 +4,13 @@ namespace Assets.Scripts.GameMechanic.Commands
 {
     public class MoveCommand : BaseCommand
     {
-        public Vector2 Destination;
+        public Vector3 Destination;
+
+        public MoveCommand(Vector3 destination, GameUnit target)
+        {
+            Destination = destination;
+            Target = target;
+        }
 
         public override void UpdateCommand()
         {

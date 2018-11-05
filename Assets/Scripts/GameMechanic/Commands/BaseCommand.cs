@@ -14,6 +14,12 @@
             
         }
 
+        public bool CanBeInterruptedByCommand(BaseCommand newCommand)
+        {
+            ////TODO
+            return true;
+        }
+
 
     }
 }

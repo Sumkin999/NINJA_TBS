@@ -10,7 +10,24 @@ namespace Assets.Scripts.GameMechanic
 
         public void PauseGame()
         {
-            
+            IsOnPause = true;
+        }
+
+        public void UnpauseGame()
+        {
+            IsOnPause = false;
+        }
+
+        public void SwitchPause()
+        {
+            if (IsOnPause)
+            {
+                IsOnPause = false;
+            }
+            else
+            {
+                IsOnPause = true;
+            }
         }
 
         // Use this for initialization

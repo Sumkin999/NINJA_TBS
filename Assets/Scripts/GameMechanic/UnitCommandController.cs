@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.GameMechanic.Commands;
+using UnityEngine;
 
 namespace Assets.Scripts.GameMechanic
 {
@@ -12,6 +13,36 @@ namespace Assets.Scripts.GameMechanic
     {
         public CommandControllerState State;
 
+        private BaseCommand currentCommand;
+
+        public bool TryToApplyCommand(BaseCommand newCommand)
+        {
+            if (currentCommand != null)
+            {
+                if (currentCommand.CanBeInterruptedByCommand(newCommand))
+                {
+                    currentCommand = newCommand;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                currentCommand = newCommand;
+                return true;
+            }
+        }
+
+        public void Update()
+        {
+            if (currentCommand!= null)
+            {
+                currentCommand.UpdateCommand();
+            }
+        }
 
     }
 }
