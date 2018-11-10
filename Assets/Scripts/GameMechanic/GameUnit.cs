@@ -8,6 +8,8 @@ namespace Assets.Scripts.GameMechanic
         private NavMeshAgent navMeshAgent;
 
         public float Speed = 3.5f;
+        public float Direction;
+        public UnitView UnitView;
 
         void Awake()
         {
@@ -23,6 +25,7 @@ namespace Assets.Scripts.GameMechanic
             else
             {
                 navMeshAgent.speed = Speed;
+                UnitView.Velocity = navMeshAgent.desiredVelocity;
             }
             navMeshAgent.destination = destination;
             navMeshAgent.Resume();
