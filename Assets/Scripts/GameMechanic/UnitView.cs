@@ -5,17 +5,15 @@ namespace Assets.Scripts.GameMechanic
 {
     public class UnitView:MonoBehaviour
     {
-        private GameUnit unit;
+        public GameUnit Unit;
         public Vector3 Velocity;
         public Animator Animator;
-
-        public void Start()
-        {
-            unit = GetComponentInParent<GameUnit>();
-        }
+        public Vector3 Offset;
 
         public void Update()
         {
+            transform.position = Unit.transform.position + Offset;
+
             if (Game.GameTime.IsOnPause)
             {
                 Animator.speed = 0f;
@@ -24,9 +22,29 @@ namespace Assets.Scripts.GameMechanic
             {
                 Animator.speed = 1f;
             }
-            transform.rotation = Quaternion.AngleAxis(unit.Direction,Vector3.up);
-            Animator.SetFloat("Move",-Velocity.x);
-            Animator.SetFloat("Strafe", -Velocity.z);
+
+            Vector3 reletiveVelocity = transform.InverseTransformVector(Velocity);
+
+            Animator.SetFloat("Move", reletiveVelocity.x);
+            Animator.SetFloat("Strafe", reletiveVelocity.z);
+
+            Rotate();
+        }
+
+        Vector2 RotateVector(Vector2 point, float angle)
+        {
+            Vector2 rotatedPoint;
+            rotatedPoint.x = point.x * Mathf.Cos(angle) - point.y * Mathf.Sin(angle);
+            rotatedPoint.y = point.x * Mathf.Sin(angle) + point.y * Mathf.Cos(angle);
+            return rotatedPoint;
+        }
+
+        private void Rotate()
+        {
+            if (Game.GameTime.IsOnPause)
+                return;
+
+            transform.rotation =  Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(Unit.Direction, Vector3.up),Time.deltaTime*Unit.RotationSpeed);
         }
     }
 }

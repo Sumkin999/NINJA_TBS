@@ -39,7 +39,22 @@ namespace Assets.Scripts.Interface
 
                 if (Physics.Raycast(ray, out hit, 100))
                 {
-                    SelectCommand(new InterfaceCommandMove(hit.point));
+                    if (hit.transform.gameObject.CompareTag("Enemy"))
+                    {
+                        GameUnit targetUnit = hit.transform.GetComponent<GameUnit>();
+                        if ((Game.PlayerUnit.Target == null)||(Game.PlayerUnit.Target != targetUnit))
+                        {
+                            Game.PlayerUnit.Target = targetUnit;
+                        }
+                        else
+                        {
+                            Game.PlayerUnit.Target = null;
+                        }
+                    }
+                    else
+                    {
+                        SelectCommand(new InterfaceCommandMove(hit.point));
+                    }
                 }
             }
         }
