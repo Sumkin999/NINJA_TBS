@@ -9,6 +9,7 @@ namespace Assets.Scripts.GameMechanic
         public Vector3 Velocity;
         public Animator Animator;
         public Vector3 Offset;
+        public float CurrentDirection;
 
         public void Update()
         {
@@ -29,6 +30,8 @@ namespace Assets.Scripts.GameMechanic
             Animator.SetFloat("Strafe", reletiveVelocity.z);
 
             Rotate();
+
+            CurrentDirection = Vector3.SignedAngle(Vector3.forward, transform.forward,Vector3.up);
         }
 
         Vector2 RotateVector(Vector2 point, float angle)

@@ -6,8 +6,8 @@ namespace Assets.Scripts.Interface.Camera
     {
         public enum UpdateType // The available methods of updating are:
         {
-            FixedUpdate, // Update in FixedUpdate (for tracking rigidbodies).
-            LateUpdate, // Update in LateUpdate. (for tracking objects that are moved in Update)
+            FixedUpdate, // UpdateCommand in FixedUpdate (for tracking rigidbodies).
+            LateUpdate, // UpdateCommand in LateUpdate. (for tracking objects that are moved in UpdateCommand)
             ManualUpdate, // user must call to update camera
         }
 
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Interface.Camera
         protected virtual void Start()
         {
             // if auto targeting is used, find the object tagged "Player"
-            // any class inheriting from this should call base.Start() to perform this action!
+            // any class inheriting from this should call base.StartCommand() to perform this action!
             if (m_AutoTargetPlayer)
             {
                 FindAndTargetPlayer();

@@ -36,7 +36,7 @@ namespace Assets.Scripts.GameMechanic
 		
         }
 	
-        // Update is called once per frame
+        // UpdateCommand is called once per frame
         void Update ()
         {
 		

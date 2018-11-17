@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.GameMechanic.Commands
+﻿using UnityEngine;
+
+namespace Assets.Scripts.GameMechanic.Commands
 {
     public class BaseCommand
     {
@@ -14,7 +16,7 @@
             
         }
 
-        public bool CanBeInterruptedByCommand(BaseCommand newCommand)
+        public virtual  bool CanBeInterruptedByCommand(BaseCommand newCommand)
         {
             ////TODO
             return true;

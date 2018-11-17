@@ -13,10 +13,17 @@ namespace Assets.Scripts.Interface.InterfaceCommand
             Destination = destination;
         }
 
-        public override void Start()
+        public override void StartCommand()
         {
             UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
             unitCommandController.TryToApplyCommand(new MoveCommand(Destination,Game.PlayerUnit));
+        }
+
+        public override void OnTerrainClick(Vector3 destination)
+        {
+            UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
+            unitCommandController.TryToApplyCommand(new MoveCommand(destination, Game.PlayerUnit));
+            OnTargetSelected();
         }
     }
 }
