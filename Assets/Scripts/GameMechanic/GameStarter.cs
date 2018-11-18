@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interface;
+using UnityEngine;
 
 namespace Assets.Scripts.GameMechanic
 {
@@ -8,6 +9,9 @@ namespace Assets.Scripts.GameMechanic
         {
             Game.PlayerUnit = GetComponent<GameUnit>();
             Game.GameTime = GetComponent<GameTime>();
+            Game.InterfaceMainController = GetComponent<InterfaceMainController>();
+
+            Debug.Log("START "+this.gameObject.name);
         }
     }
 }

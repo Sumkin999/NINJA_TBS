@@ -28,6 +28,7 @@ namespace Assets.Scripts.GameMechanic
             {
                 IsOnPause = true;
             }
+            Game.InterfaceMainController.PauseImageVisibility(IsOnPause);
         }
 
         // Use this for initialization
