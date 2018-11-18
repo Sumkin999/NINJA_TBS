@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Interface;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.GameMechanic
 {
@@ -7,11 +8,13 @@ namespace Assets.Scripts.GameMechanic
     {
         void Start()
         {
+            SceneManager.LoadScene("UI",LoadSceneMode.Additive);
+
             Game.PlayerUnit = GetComponent<GameUnit>();
             Game.GameTime = GetComponent<GameTime>();
             Game.InterfaceMainController = GetComponent<InterfaceMainController>();
 
-            Debug.Log("START "+this.gameObject.name);
+
         }
     }
 }

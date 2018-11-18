@@ -4,8 +4,6 @@ namespace Assets.Scripts.GameMechanic
 {
     public class GameTime : MonoBehaviour
     {
-
-
         public bool IsOnPause {get; private set; }
 
         public void PauseGame()
@@ -20,27 +18,7 @@ namespace Assets.Scripts.GameMechanic
 
         public void SwitchPause()
         {
-            if (IsOnPause)
-            {
-                IsOnPause = false;
-            }
-            else
-            {
-                IsOnPause = true;
-            }
-            Game.InterfaceMainController.PauseImageVisibility(IsOnPause);
-        }
-
-        // Use this for initialization
-        void Start ()
-        {
-		
-        }
-	
-        // UpdateCommand is called once per frame
-        void Update ()
-        {
-		
+            IsOnPause = !IsOnPause;
         }
     }
 }
