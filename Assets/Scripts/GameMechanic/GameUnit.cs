@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.GameMechanic.Commands;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Assets.Scripts.GameMechanic
@@ -27,25 +28,36 @@ namespace Assets.Scripts.GameMechanic
             else
             {
                 navMeshAgent.speed = Speed;
-                UnitView.Velocity = navMeshAgent.desiredVelocity;
+                UnitView.Velocity = navMeshAgent.velocity;
                 UpdateMoveDirection();
             }
             navMeshAgent.destination = destination;
             navMeshAgent.isStopped = false;
         }
 
-        public void UpdateMoveDirection()
+        public void StopMove()
         {
-            if (Target != null)
-            {
-                Direction = GetAngle(Target.transform.position);  
-                return;
-            }
-
-            Direction = GetAngle(navMeshAgent.destination);
+            navMeshAgent.destination = transform.position;
+            navMeshAgent.isStopped = true;
+            UnitView.Velocity = Vector3.zero;
         }
 
-        private float GetAngle(Vector3 target)
+        public void UpdateMoveDirection()
+        {
+            UnitCommandController unitCommandController = GetComponent<UnitCommandController>();
+            if (unitCommandController.CurrentCommand is MoveCommand)
+            {
+                if (Target != null)
+                {
+                    Direction = GetAngle(Target.transform.position);
+                    return;
+                }
+
+                Direction = GetAngle(navMeshAgent.destination);
+            }
+        }
+
+        public float GetAngle(Vector3 target)
         {
             Vector3 targetVector = (target - transform.position+transform.forward*0.3f).normalized;
             float angle = -Vector2.SignedAngle(Vector2.up, new Vector2(targetVector.x, targetVector.z));

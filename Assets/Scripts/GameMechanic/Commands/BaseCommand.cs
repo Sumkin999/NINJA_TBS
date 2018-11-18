@@ -11,6 +11,8 @@ namespace Assets.Scripts.GameMechanic.Commands
             
         }
 
+        public virtual void StopCommand() { }
+
         public void CompleteCommand()
         {
             

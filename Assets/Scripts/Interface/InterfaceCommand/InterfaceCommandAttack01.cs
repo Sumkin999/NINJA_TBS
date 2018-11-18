@@ -9,7 +9,7 @@ namespace Assets.Scripts.Interface.InterfaceCommand
         public override void OnTerrainClick(Vector3 destination)
         {
             UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
-            float angle = Vector3.SignedAngle(Vector3.forward, Game.PlayerUnit.transform.forward, Vector3.up);
+            float angle = Game.PlayerUnit.GetAngle(destination);    
             unitCommandController.TryToApplyCommand(new AttackCommand(angle, "Attack01", Game.PlayerUnit));
             OnTargetSelected();
         }

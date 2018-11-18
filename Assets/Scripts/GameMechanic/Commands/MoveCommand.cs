@@ -21,5 +21,10 @@ namespace Assets.Scripts.GameMechanic.Commands
                 CompleteCommand();
             }
         }
+
+        public override void StopCommand()
+        {
+            Target.StopMove();
+        }
     }
 }

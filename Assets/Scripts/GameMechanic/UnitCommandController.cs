@@ -13,15 +13,16 @@ namespace Assets.Scripts.GameMechanic
     {
         public CommandControllerState State;
 
-        private BaseCommand currentCommand;
+        public BaseCommand CurrentCommand;
 
         public bool TryToApplyCommand(BaseCommand newCommand)
         {
-            if (currentCommand != null)
+            if (CurrentCommand != null)
             {
-                if (currentCommand.CanBeInterruptedByCommand(newCommand))
+                if (CurrentCommand.CanBeInterruptedByCommand(newCommand))
                 {
-                    currentCommand = newCommand;
+                    CurrentCommand.StopCommand();
+                    CurrentCommand = newCommand;
                     return true;
                 }
                 else
@@ -31,16 +32,16 @@ namespace Assets.Scripts.GameMechanic
             }
             else
             {
-                currentCommand = newCommand;
+                CurrentCommand = newCommand;
                 return true;
             }
         }
 
         public void Update()
         {
-            if (currentCommand!= null)
+            if (CurrentCommand!= null)
             {
-                currentCommand.UpdateCommand();
+                CurrentCommand.UpdateCommand();
             }
         }
 
