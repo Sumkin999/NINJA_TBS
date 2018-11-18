@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameMechanic;
+﻿using System.Collections.Generic;
+using Assets.Scripts.GameMechanic;
 using Assets.Scripts.GameMechanic.Commands;
 using UnityEngine;
 
@@ -11,7 +12,16 @@ namespace Assets.Scripts.Interface.InterfaceCommand
             UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
             float angle = Game.PlayerUnit.GetAngle(destination);    
             unitCommandController.TryToApplyCommand(new AttackCommand(angle, "Attack01", Game.PlayerUnit));
+            UnpauseOnTargetSelected = true;
             OnTargetSelected();
+        }
+
+        public override void SelectAvailableCommands(List<BaseInterfaceCommand> commands)
+        {
+            foreach (var command in commands)
+            {
+                command.State = CommandState.Hidden;
+            }
         }
     }
 }

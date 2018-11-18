@@ -16,9 +16,10 @@ namespace Assets.Scripts.GameMechanic.Commands
         {
             Target.MoveTo(Destination);
 
-            if (Vector2.Distance(Destination,new Vector2(Target.transform.position.x, Target.transform.position.z))<0.1f)
+            if (Vector2.Distance(new Vector2(Destination.x,Destination.z), new Vector2(Target.transform.position.x, Target.transform.position.z))<0.1f)
             {
-                CompleteCommand();
+                //TODO Доделать нормальный комплит перемещения
+                //CompleteCommand();
             }
         }
 

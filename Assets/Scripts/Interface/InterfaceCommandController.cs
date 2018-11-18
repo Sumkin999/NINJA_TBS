@@ -31,6 +31,14 @@ namespace Assets.Scripts.Interface
 
         void Update()
         {
+            UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
+            if (unitCommandController.CurrentCommand == null)
+            {
+                SelectedCommand = moveCommand;
+                moveCommand.UnpauseOnTargetSelected = false;
+                SelectedCommand.OnTerrainClick(Game.PlayerUnit.transform.position);
+            }
+
             if (currentCommand != null)
             {
                 currentCommand.UpdateCommand();
@@ -55,7 +63,6 @@ namespace Assets.Scripts.Interface
         public void RunCommand(BaseInterfaceCommand newCommand)
         {
             currentCommand = newCommand;
-            currentCommand.StartCommand();
         }
 
         public void SelectCommand(BaseInterfaceCommand command)

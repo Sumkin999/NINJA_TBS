@@ -45,5 +45,16 @@ namespace Assets.Scripts.GameMechanic
             }
         }
 
+        public void CompleteCommand(BaseCommand command)
+        {
+            if (CurrentCommand != command)
+                return;
+
+            if (command.PauseOnComplete)
+                Game.GameTime.PauseGame();
+
+            CurrentCommand = null;
+        }
+
     }
 }
