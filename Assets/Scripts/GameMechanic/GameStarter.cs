@@ -12,9 +12,9 @@ namespace Assets.Scripts.GameMechanic
 
             Game.PlayerUnit = GetComponent<GameUnit>();
             Game.GameTime = GetComponent<GameTime>();
-            Game.InterfaceMainController = GetComponent<InterfaceMainController>();
+            
 
-
+            
         }
     }
 }

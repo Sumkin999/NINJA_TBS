@@ -8,5 +8,6 @@ namespace Assets.Scripts.GameMechanic
         public static GameTime GameTime;
         public static InterfaceCommandController InterfaceCommandController;
         public static InterfaceMainController InterfaceMainController;
+
     }
 }

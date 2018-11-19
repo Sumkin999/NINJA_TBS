@@ -39,6 +39,10 @@ namespace Assets.Scripts.GameMechanic.Commands
             {
                 animationStarted = true;
                 Target.UnitView.Animator.SetTrigger(AnimatorTrigger);
+
+                //GOVNOKOD
+                Target.UnitSound.SwordWindSoundPlay();
+                //
             }
             else
             {
