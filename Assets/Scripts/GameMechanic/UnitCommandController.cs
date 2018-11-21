@@ -51,7 +51,7 @@ namespace Assets.Scripts.GameMechanic
                 return;
 
             command.StopCommand();
-            CurrentCommand = null;
+            CurrentCommand = new IdleCommand(GetComponent<GameUnit>());
 
             if (command.PauseOnComplete)
                 Game.GameTime.PauseGame();

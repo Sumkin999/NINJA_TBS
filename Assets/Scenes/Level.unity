@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8724b6b8a023d4cb236392bcc495d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3.5
+  Speed: 2
   RotationSpeed: 6
   Direction: 180
   UnitView: {fileID: 176610973}
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8724b6b8a023d4cb236392bcc495d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3.5
+  Speed: 2
   RotationSpeed: 180
   Direction: 0
   UnitView: {fileID: 496023547}

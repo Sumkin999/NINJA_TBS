@@ -11,7 +11,7 @@ namespace Assets.Scripts.Interface.InterfaceCommand
         {
             UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
             float angle = Game.PlayerUnit.GetAngle(destination);
-            unitCommandController.TryToApplyCommand(new AttackCommand(angle, "Attack01", Game.PlayerUnit));
+            unitCommandController.TryToApplyCommand(new RollCommand(angle, Game.PlayerUnit));
             UnpauseOnTargetSelected = true;
             OnTargetSelected();
         }

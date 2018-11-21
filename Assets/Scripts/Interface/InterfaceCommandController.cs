@@ -36,7 +36,7 @@ namespace Assets.Scripts.Interface
 
         void Update()
         {
-            if (unitCommandController.CurrentCommand == null)
+            if ((unitCommandController.CurrentCommand == null) || (unitCommandController.CurrentCommand is IdleCommand))
             {
                 currentCommand = IdleCommand;
                 IdleCommand.OnTargetSelected();

@@ -46,7 +46,7 @@ namespace Assets.Scripts.GameMechanic.Commands
             }
             else
             {
-                Target.MoveTo(moveTarget);
+                Target.MoveTo(moveTarget,MoveSpeed);
             }
 
             StopMoveNearEnemy();

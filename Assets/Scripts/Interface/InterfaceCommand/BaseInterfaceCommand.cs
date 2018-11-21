@@ -46,6 +46,12 @@ namespace Assets.Scripts.Interface.InterfaceCommand
                     continue;
                 }
 
+                if (command is InterfaceCommandRoll)
+                {
+                    SetAvailableIfHidden(command);
+                    continue;
+                }
+
                 command.State = CommandState.Hidden;
             }
         }

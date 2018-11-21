@@ -30,7 +30,7 @@ namespace Assets.Scripts.GameMechanic
             navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
-        public void MoveTo(Vector3 destination)
+        public void MoveTo(Vector3 destination, float speed)
         {
             if (Game.GameTime.IsOnPause)
             {
@@ -42,7 +42,14 @@ namespace Assets.Scripts.GameMechanic
             }
             else
             {
-                navMeshAgent.speed = Speed;
+                if (speed<0)
+                {
+                    navMeshAgent.speed = Speed;
+                }
+                else
+                {
+                    navMeshAgent.speed = speed;
+                }
                 UnitView.Velocity = navMeshAgent.velocity;
                 UpdateMoveDirection();
                 
@@ -67,6 +74,7 @@ namespace Assets.Scripts.GameMechanic
             navMeshAgent.destination = transform.position;
             navMeshAgent.isStopped = true;
             UnitView.Velocity = Vector3.zero;
+            UpdateMoveDirection();
 
             //Govnokod
             IsMoving = false;
@@ -76,7 +84,7 @@ namespace Assets.Scripts.GameMechanic
         public void UpdateMoveDirection()
         {
             UnitCommandController unitCommandController = GetComponent<UnitCommandController>();
-            if (unitCommandController.CurrentCommand is MoveCommand)
+            if ((unitCommandController.CurrentCommand is MoveCommand) || (unitCommandController.CurrentCommand is IdleCommand) || (unitCommandController.CurrentCommand is RollCommand))
             {
                 if (Target != null)
                 {
