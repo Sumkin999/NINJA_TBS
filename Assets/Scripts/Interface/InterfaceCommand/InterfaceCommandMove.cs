@@ -12,8 +12,8 @@ namespace Assets.Scripts.Interface.InterfaceCommand
         {
             UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
             unitCommandController.TryToApplyCommand(new MoveCommand(destination, Game.PlayerUnit));
-            OnTargetSelected();
             UnpauseOnTargetSelected = true;
+            OnTargetSelected();
         }
     }
 }

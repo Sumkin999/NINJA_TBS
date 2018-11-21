@@ -8,6 +8,7 @@ namespace Assets.Scripts.GameMechanic.Commands
 
         public MoveCommand(Vector3 destination, GameUnit target)
         {
+            PauseOnComplete = true;
             Destination = destination;
             Target = target;
         }
@@ -18,8 +19,7 @@ namespace Assets.Scripts.GameMechanic.Commands
 
             if (Vector2.Distance(new Vector2(Destination.x,Destination.z), new Vector2(Target.transform.position.x, Target.transform.position.z))<0.1f)
             {
-                //TODO Доделать нормальный комплит перемещения
-                //CompleteCommand();
+                CompleteCommand();
             }
         }
 

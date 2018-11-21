@@ -50,10 +50,11 @@ namespace Assets.Scripts.GameMechanic
             if (CurrentCommand != command)
                 return;
 
+            command.StopCommand();
+            CurrentCommand = null;
+
             if (command.PauseOnComplete)
                 Game.GameTime.PauseGame();
-
-            CurrentCommand = null;
         }
 
     }

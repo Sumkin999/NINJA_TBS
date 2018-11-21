@@ -71,8 +71,6 @@ namespace Assets.Scripts.GameMechanic.Commands
             Ray ray = new Ray(rayFrom, Target.UnitView.transform.forward);
             RaycastHit[] hits = Physics.RaycastAll(ray, 0.7f);
 
-            Debug.DrawLine(rayFrom, rayFrom + Target.UnitView.transform.forward * 2f, Color.red);
-
             foreach (var hit in hits)
             {
                 if (hit.transform.gameObject.CompareTag("Enemy"))

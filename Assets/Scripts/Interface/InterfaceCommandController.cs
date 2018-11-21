@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.GameMechanic;
+using Assets.Scripts.GameMechanic.Commands;
 using Assets.Scripts.Interface.InterfaceCommand;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,9 @@ namespace Assets.Scripts.Interface
         public List<BaseInterfaceCommand> AllCommands;
 
         private InterfaceCommandMove moveCommand;
+        public InterfaceCommandIdle IdleCommand;
+
+        private UnitCommandController unitCommandController;
 
         public BaseInterfaceCommand SelectedCommand;
 
@@ -27,16 +31,15 @@ namespace Assets.Scripts.Interface
             }
 
             Game.InterfaceCommandController = this;
+            unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
         }
 
         void Update()
         {
-            UnitCommandController unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
             if (unitCommandController.CurrentCommand == null)
             {
-                SelectedCommand = moveCommand;
-                moveCommand.UnpauseOnTargetSelected = false;
-                SelectedCommand.OnTerrainClick(Game.PlayerUnit.transform.position);
+                currentCommand = IdleCommand;
+                IdleCommand.OnTargetSelected();
             }
 
             if (currentCommand != null)
@@ -106,10 +109,15 @@ namespace Assets.Scripts.Interface
                     }
                     else
                     {
-                        if (SelectedCommand == null)
+
+
+                        if (SelectedCommand == null )
                         {
-                            SelectedCommand = moveCommand;
-                            SelectedCommand.OnTerrainClick(hit.point);
+                            if (unitCommandController.CurrentCommand == null || unitCommandController.CurrentCommand.CanBeInterruptedByCommand(new MoveCommand(hit.point, Game.PlayerUnit)))
+                            {
+                                SelectedCommand = moveCommand;
+                                SelectedCommand.OnTerrainClick(hit.point);
+                            }
                         }
                         else
                         {

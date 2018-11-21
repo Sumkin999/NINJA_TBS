@@ -1179,10 +1179,10 @@ GameObject:
   - component: {fileID: 1645907101}
   - component: {fileID: 1645907100}
   - component: {fileID: 1645907106}
-  - component: {fileID: 1645907105}
-  - component: {fileID: 1645907104}
   - component: {fileID: 1645907107}
   - component: {fileID: 1645907108}
+  - component: {fileID: 1645907110}
+  - component: {fileID: 1645907109}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1259,40 +1259,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1645907104
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1645907099}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1645907105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1645907099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 483fb44643b9b374d9494d36b453a283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Unit: {fileID: 1645907106}
-  Velocity: {x: 0, y: 0, z: 0}
-  Animator: {fileID: 1645907104}
-  Offset: {x: 0, y: 0, z: 0}
-  CurrentDirection: 0
 --- !u!114 &1645907106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,7 +1273,7 @@ MonoBehaviour:
   Speed: 3.5
   RotationSpeed: 180
   Direction: 0
-  UnitView: {fileID: 1645907105}
+  UnitView: {fileID: 496023547}
   Target: {fileID: 0}
   UnitSound: {fileID: 0}
   Health: 1
@@ -1347,6 +1313,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1645907109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645907099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a94485745249143947d4d408dc0d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: 0
+--- !u!114 &1645907110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645907099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09804fa5b38ce1468babc703fafea65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameUnit: {fileID: 0}
 --- !u!1 &1808139303
 GameObject:
   m_ObjectHideFlags: 0

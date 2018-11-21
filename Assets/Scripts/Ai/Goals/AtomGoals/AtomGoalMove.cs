@@ -26,7 +26,9 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
                 +BrainBase.GameUnit.gameObject.transform.position;
 
             UnitCommandController unitCommandController = BrainBase.GameUnit.GetComponent<UnitCommandController>();
-            unitCommandController.TryToApplyCommand(new MoveCommand(Destination, BrainBase.GameUnit));
+            MoveCommand moveCommand = new MoveCommand(Destination, BrainBase.GameUnit);
+            moveCommand.PauseOnComplete = false;
+            unitCommandController.TryToApplyCommand(moveCommand);
             
 
             GoalState = GoalState.Active;

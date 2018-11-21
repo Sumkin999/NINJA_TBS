@@ -19,6 +19,7 @@ namespace Assets.Scripts.Interface.InterfaceCommand
         {
             State = CommandState.Active;
             Game.InterfaceCommandController.RunCommand(this);
+
             if (Game.GameTime.IsOnPause && UnpauseOnTargetSelected)
             {
                 Game.GameTime.UnpauseGame();
