@@ -9,6 +9,7 @@ namespace Assets.Scripts.Interface
         public Image PauseImage;
 
         public Slider HealthSlider;
+        public Slider StaminSlider;
 
         public GameObject MoveTargetGameObject;
         public GameObject AttackTargetGameObject;
@@ -22,6 +23,7 @@ namespace Assets.Scripts.Interface
         {
             PauseImageVisibility(Game.GameTime.IsOnPause);
             UpdateHealthSlider();
+            UpdateStaminaSlider();
             PlayerTargetControl();
         }
 
@@ -35,6 +37,11 @@ namespace Assets.Scripts.Interface
         public void UpdateHealthSlider()
         {
             HealthSlider.value = Game.PlayerUnit.Health/HealthSlider.maxValue;
+        }
+
+        public void UpdateStaminaSlider()
+        {
+            
         }
 
         public void PlayerTargetControl()
