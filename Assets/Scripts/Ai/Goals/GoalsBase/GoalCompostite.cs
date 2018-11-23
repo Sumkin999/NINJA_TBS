@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Scripts.Ai.Brain;
+using Assets.Scripts.Ai.Interest;
 using UnityEngine;
 
 namespace Assets.Scripts.Ai.Goals.GoalsBase
 {
     public class GoalCompostite:Goal
     {
-        public GoalCompostite(BrainBase brain): base(brain)
+        public GoalCompostite(BrainBase brain,InterestBrain interestBrain, AddGoalClass addGoal) : base(brain,interestBrain,addGoal)
         {
             BrainBase = brain;
+            InterestBrain = interestBrain;
+            AddGoalClass = addGoal;
         }
         public List<Goal> GoalsList = new List<Goal>();
 

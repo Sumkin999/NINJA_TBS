@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.GameMechanic;
+using UnityEngine;
 
 namespace Assets.Scripts.Ai.Interest
 {
@@ -22,11 +24,32 @@ namespace Assets.Scripts.Ai.Interest
 
     public class PlayerInterestObject : InterestObject
     {
-        
+        public PlayerInterestObject(GameUnit gameUnitLocal)
+        {
+            Unit = gameUnitLocal;
+        }
+        public GameUnit Unit { get; private set; }
+
+        public override bool IsEqual(InterestObject interestObject)
+        {
+            PlayerInterestObject playerInterestObject=interestObject as PlayerInterestObject;
+
+            if (playerInterestObject==null)
+            {
+                return false;
+            }
+
+            if (playerInterestObject.Unit==Unit)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
-    public class PlayerPositionInterestObject : InterestObject
-    {
-        
-    }
+ 
+    
 }

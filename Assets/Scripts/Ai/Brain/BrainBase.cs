@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Ai.Goals.AtomGoals;
 using Assets.Scripts.Ai.Goals.CompositeGoals;
 using Assets.Scripts.Ai.Goals.GoalsBase;
 using Assets.Scripts.Ai.Interest;
@@ -16,6 +17,7 @@ namespace Assets.Scripts.Ai.Brain
         public GameUnit GameUnit;
 
         protected InterestBrain InterestBrain;
+        protected AddGoalClass AddGoalClass;
         
 
         public void AddInterest(InterestObject interestObjectAdd)
@@ -31,6 +33,7 @@ namespace Assets.Scripts.Ai.Brain
             }
             if (!contains)
             {
+                Debug.Log("Add interest!");
                 InterestBrain.InterestPoints.Add(interestObjectAdd);
             }
         }
@@ -48,7 +51,9 @@ namespace Assets.Scripts.Ai.Brain
         }
 
 
-        protected CompositeGoalThink CompositeGoalThink;
+        public CompositeGoalThink CompositeGoalThink { get; private set; }
+
+        public ViewCone ViewCone;
 
 
         void Start()
@@ -56,13 +61,19 @@ namespace Assets.Scripts.Ai.Brain
             GameUnit = GetComponent<GameUnit>();
             InterestBrain=new InterestBrain(this);
 
-            CompositeGoalThink=new CompositeGoalThink(this);
+            CompositeGoalThink=new CompositeGoalThink(this,InterestBrain,AddGoalClass);
             CompositeGoalThink.Avtivate();
+
+            ViewCone.SetAddGoalClass(this,AddGoalClass);
         }
 
+
+        
         void Update()
         {
             CompositeGoalThink.UpdateAction();
+
+            InterestBrain.UpdateInterestObjects();
 
             if (CompositeGoalThink.GoalState==GoalState.Completed)
             {
