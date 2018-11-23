@@ -13,11 +13,12 @@ namespace Assets.Scripts.GameMechanic
         public float Direction;
         public UnitView UnitView;
         public GameUnit Target;
+        public WeaponTrigger WeaponTrigger;
 
         //Govnokod
         public UnitSound UnitSound;
 
-        public float Health;
+        public float Health = 100;
 
         public bool IsMoving { get; private set; }
 
@@ -101,6 +102,20 @@ namespace Assets.Scripts.GameMechanic
             Vector3 targetVector = (target - transform.position+transform.forward*0.3f).normalized;
             float angle = -Vector2.SignedAngle(Vector2.up, new Vector2(targetVector.x, targetVector.z));
             return angle;
+        }
+
+        public void DealDamage(float damage)
+        {
+            Health -= damage;
+            if (Health<=0)
+            {
+                Death();
+            }
+        }
+
+        public void Death()
+        {
+            
         }
     }
 }

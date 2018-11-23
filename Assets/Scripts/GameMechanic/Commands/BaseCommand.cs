@@ -26,6 +26,8 @@ namespace Assets.Scripts.GameMechanic.Commands
             return true;
         }
 
+        public virtual void OnWeaponnTriggeredEnemy(GameUnit enemy){ }
+
 
     }
 }

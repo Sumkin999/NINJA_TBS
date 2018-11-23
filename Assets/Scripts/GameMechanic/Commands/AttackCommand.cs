@@ -13,6 +13,9 @@ namespace Assets.Scripts.GameMechanic.Commands
         public float TimeToComplete = 0.8f;
         private Vector3 moveTarget;
         private float timer = 0f;
+        public float Damage = 10;
+        public float TimeToActivateTrigger = 0.2f;
+        public float TimeToDeactivateTrigger = 0.4f;
 
 
         public AttackCommand(float direction, string animatorTrigger, GameUnit target)
@@ -58,6 +61,17 @@ namespace Assets.Scripts.GameMechanic.Commands
             if (animationStarted)
                 timer += Time.deltaTime;
 
+            Collider collider = Target.WeaponTrigger.GetComponent<Collider>();
+
+            if ((timer > TimeToActivateTrigger) && (timer < TimeToDeactivateTrigger))
+            {
+                collider.enabled = true;
+            }
+            else
+            {
+                collider.enabled = false;
+            }
+
             if (timer > TimeToComplete)
             {
                 CompleteCommand();
@@ -88,6 +102,12 @@ namespace Assets.Scripts.GameMechanic.Commands
             }
 
             return true;
+        }
+
+        public override void OnWeaponnTriggeredEnemy(GameUnit enemy)
+        {
+            enemy.DealDamage(Damage);
+            Debug.Log(enemy.Health);
         }
     }
 }

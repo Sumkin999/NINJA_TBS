@@ -113,6 +113,35 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 85d7d74576328d84682b7e728d448e1a, type: 2}
+--- !u!1 &59636469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 69ec431c9eb129c44a3337c99edbe118,
+    type: 3}
+  m_PrefabInternal: {fileID: 1904643531}
+--- !u!114 &59636470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59636469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d56bc7966287c64dbc90fb9da884ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Caster: {fileID: 1645907106}
+--- !u!65 &59636471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 59636469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 1.43, z: 0.48}
+  m_Center: {x: 0, y: 0.67, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +374,35 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: ff52e6a0420b12b43bc5e981d603c546,
     type: 3}
   m_PrefabInternal: {fileID: 1286318646}
+--- !u!1 &513022671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 69ec431c9eb129c44a3337c99edbe118,
+    type: 3}
+  m_PrefabInternal: {fileID: 1548071696}
+--- !u!65 &513022673
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513022671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 1.43, z: 0.48}
+  m_Center: {x: 0, y: 0.67, z: 0}
+--- !u!114 &513022674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513022671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d56bc7966287c64dbc90fb9da884ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Caster: {fileID: 1245846255}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,8 +881,9 @@ MonoBehaviour:
   Direction: 180
   UnitView: {fileID: 176610973}
   Target: {fileID: 0}
+  WeaponTrigger: {fileID: 513022674}
   UnitSound: {fileID: 1245846258}
-  Health: 1
+  Health: 100
 --- !u!114 &1245846256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,8 +1334,9 @@ MonoBehaviour:
   Direction: 0
   UnitView: {fileID: 496023547}
   Target: {fileID: 0}
+  WeaponTrigger: {fileID: 59636470}
   UnitSound: {fileID: 0}
-  Health: 1
+  Health: 100
 --- !u!195 &1645907107
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1331,7 +1391,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645907099}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f09804fa5b38ce1468babc703fafea65, type: 3}
   m_Name: 
