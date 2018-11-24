@@ -20,6 +20,9 @@ namespace Assets.Scripts.Ai.Interest
 
         void Update()
         {
+            if (brain == null)
+                return;
+
             Vector3 rayFrom = transform.position;
             Ray ray = new Ray(rayFrom, transform.forward);
             RaycastHit[] hits = Physics.SphereCastAll(ray, RayRadius,RayDistance);
