@@ -140,8 +140,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 1.43, z: 0.48}
-  m_Center: {x: 0, y: 0.67, z: 0}
+  m_Size: {x: 0.15, y: 1.75, z: 0.48}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,8 +431,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 1.43, z: 0.48}
-  m_Center: {x: 0, y: 0.67, z: 0}
+  m_Size: {x: 0.15, y: 1.75, z: 0.48}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &513022674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,7 +946,7 @@ Rigidbody:
   m_GameObject: {fileID: 1245846247}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  RotationSpeed: 180
+  RotationSpeed: 60
   Direction: 0
   UnitView: {fileID: 496023547}
   Target: {fileID: 0}
@@ -1421,7 +1421,7 @@ Rigidbody:
   m_GameObject: {fileID: 1645907099}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0

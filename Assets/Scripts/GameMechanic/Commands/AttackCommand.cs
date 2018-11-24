@@ -15,7 +15,7 @@ namespace Assets.Scripts.GameMechanic.Commands
         private float timer = 0f;
         public float Damage = 10;
         public float TimeToActivateTrigger = 0.2f;
-        public float TimeToDeactivateTrigger = 0.4f;
+        public float TimeToDeactivateTrigger = 0.45f;
 
 
         public AttackCommand(float direction, string animatorTrigger, GameUnit target)
@@ -105,13 +105,30 @@ namespace Assets.Scripts.GameMechanic.Commands
                 return false;
             }
 
+            if (newCommand is RollCommand)
+            {
+                return false;
+            }
+
+            if (newCommand is AttackCommand)
+            {
+                return false;
+            }
+
             return true;
         }
 
         public override void OnWeaponnTriggeredEnemy(GameUnit enemy)
         {
             enemy.DealDamage(Damage);
-            Debug.Log(enemy.Health);
+            UnitCommandController unitCommandController = enemy.GetComponent<UnitCommandController>();
+            unitCommandController.TryToApplyCommand(new HitCommand(enemy));
+            Debug.Log(enemy.name + enemy.Health.ToString());
+        }
+
+        public override void StopCommand()
+        {
+            Target.StopMove();
         }
     }
 }
