@@ -1,5 +1,6 @@
 ﻿using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.GameMechanic
 {
@@ -11,6 +12,7 @@ namespace Assets.Scripts.GameMechanic
         public Vector3 Offset;
         public float CurrentDirection;
         public float VelocitySmooth = 10;
+        public Transform HealthOffset;
 
         public void Update()
         {

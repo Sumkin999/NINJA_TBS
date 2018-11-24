@@ -31,6 +31,10 @@ namespace Assets.Scripts.GameMechanic
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             MaxHealth = Health;
+            if (CompareTag("Enemy"))
+            {
+                Game.Enemies.Add(this);
+            }
         }
 
         public void MoveTo(Vector3 destination, float speed)

@@ -1039,7 +1039,7 @@ Prefab:
     - target: {fileID: 114218992910842902, guid: 0c5eb472b4e4c96499423980df157d4b,
         type: 2}
       propertyPath: m_Value
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224346917386118368, guid: 0c5eb472b4e4c96499423980df157d4b,
         type: 2}
@@ -1114,7 +1114,7 @@ Prefab:
     - target: {fileID: 114218992910842902, guid: 0c5eb472b4e4c96499423980df157d4b,
         type: 2}
       propertyPath: m_MaxValue
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c5eb472b4e4c96499423980df157d4b, type: 2}
@@ -2444,10 +2444,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseImage: {fileID: 1738078934}
+  Canvas: {fileID: 393985094}
   HealthSlider: {fileID: 1938516238}
   StaminSlider: {fileID: 567493701}
+  EnemyHealthPrefab: {fileID: 1750251680707594, guid: 4cb47de673e4bc341ac4ec0b93ec4bf4,
+    type: 2}
   MoveTargetGameObject: {fileID: 204911342}
   AttackTargetGameObject: {fileID: 753783487}
+  Enemies: []
 --- !u!4 &1949471748
 Transform:
   m_ObjectHideFlags: 0

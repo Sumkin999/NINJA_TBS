@@ -123,7 +123,6 @@ namespace Assets.Scripts.GameMechanic.Commands
             enemy.DealDamage(Damage);
             UnitCommandController unitCommandController = enemy.GetComponent<UnitCommandController>();
             unitCommandController.TryToApplyCommand(new HitCommand(enemy));
-            Debug.Log(enemy.name + enemy.Health.ToString());
         }
 
         public override void StopCommand()

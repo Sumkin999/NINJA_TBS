@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.GameMechanic;
+﻿using System.Collections.Generic;
+using Assets.Scripts.GameMechanic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,17 +8,26 @@ namespace Assets.Scripts.Interface
     public class InterfaceMainController:MonoBehaviour
     {
         public Image PauseImage;
+        public Canvas Canvas;
 
         public Slider HealthSlider;
         public Slider StaminSlider;
+        public GameObject EnemyHealthPrefab;
 
         public GameObject MoveTargetGameObject;
         public GameObject AttackTargetGameObject;
+
+        public List<UnitView> Enemies = new List<UnitView>();
 
 
         public void Start()
         {
             Game.InterfaceMainController = this;
+
+            foreach (var enemy in Game.Enemies)
+            {
+                OnNewEnemy(enemy.UnitView, Canvas);
+            }
         }
         public void Update()
         {
@@ -25,6 +35,17 @@ namespace Assets.Scripts.Interface
             UpdateHealthSlider();
             UpdateStaminaSlider();
             PlayerTargetControl();
+        }
+
+        public void OnNewEnemy(UnitView enemy,Canvas canvas)
+        {
+            Enemies.Add(enemy);
+            GameObject healthGameObject = Instantiate(EnemyHealthPrefab);
+            healthGameObject.transform.SetParent(Canvas.transform, false);
+            EnemyHealth enemyHealth = healthGameObject.GetComponent<EnemyHealth>();
+            enemyHealth.OffsetTransform = enemy.HealthOffset;
+            enemyHealth.Canvas = canvas;
+            enemyHealth.GameUnit = enemy.Unit;
         }
 
 
@@ -36,7 +57,7 @@ namespace Assets.Scripts.Interface
 
         public void UpdateHealthSlider()
         {
-            HealthSlider.value = Game.PlayerUnit.Health/HealthSlider.maxValue;
+            HealthSlider.value = Game.PlayerUnit.Health/ Game.PlayerUnit.MaxHealth;
         }
 
         public void UpdateStaminaSlider()
