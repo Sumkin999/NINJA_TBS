@@ -1,60 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Assets.Scripts.Ai.Brain;
-using Assets.Scripts.GameMechanic;
 using UnityEngine;
 
 namespace Assets.Scripts.Ai.Interest
 {
     public class ViewCone:MonoBehaviour
     {
-        //public GameUnit Unit;
-        private BrainBase _brain;
-        private AddGoalClass _addGoalClass;
+        public float RayDistance = 1f;
+        public float RayRadius = 5f;
+        private BrainBase brain;
+        private AddGoalClass addGoalClass;
+        private List<InterestSpawner> targets = new List<InterestSpawner>();
 
-        public void SetAddGoalClass(BrainBase brain,AddGoalClass addGoalClass)
+        public void SetAddGoalClass(BrainBase newBrain,AddGoalClass newAddGoalClass)
         {
-            _brain = brain;
-            _addGoalClass = addGoalClass;
-        }
-        void Start()
-        {
-            
-            //_brain = Unit.gameObject.GetComponent<BrainBase>();
+            brain = newBrain;
+            addGoalClass = newAddGoalClass;
         }
 
-        void OnTriggerStay(Collider other)
+        void Update()
         {
-            InterestSpawner interestSpawner = other.gameObject.GetComponent<InterestSpawner>();
+            Vector3 rayFrom = transform.position;
+            Ray ray = new Ray(rayFrom, transform.forward);
+            RaycastHit[] hits = Physics.SphereCastAll(ray, RayRadius,RayDistance);
 
-            if (interestSpawner==null)
+            Debug.DrawLine(rayFrom, rayFrom + transform.forward);         
+
+            List<InterestSpawner> tempTargets = new List<InterestSpawner>();
+
+            foreach (var hit in hits)
+            {
+                InterestSpawner interestSpawner = hit.collider.GetComponent<InterestSpawner>();
+                if (interestSpawner == null)
+                    continue;
+
+                tempTargets.Add(interestSpawner);
+                if (!targets.Contains(interestSpawner))
+                {
+                    targets.Add(interestSpawner);
+                }
+            }
+
+            foreach (var target in targets)
+            {
+                if (!tempTargets.Contains(target))
+                {
+                    OnRemoveTarget(target);
+                }
+            }
+
+            targets = tempTargets;
+
+            foreach (var target in targets)
+            {
+                target.SpawnPlayerInterest(brain);
+            }
+        }
+
+        private void OnRemoveTarget(InterestSpawner interestSpawner)
+        {
+            interestSpawner.RemovePlayerInterest(brain);
+
+            if (addGoalClass == null)
             {
                 return;
             }
-
-            interestSpawner.SpawnPlayerInterest(_brain);
-        }
-
-        void OnTriggerExit(Collider other)
-        {
-            InterestSpawner interestSpawner = other.gameObject.GetComponent<InterestSpawner>();
-
-            if (interestSpawner == null)
-            {
-                return;
-            }
-
-            
-            interestSpawner.RemovePlayerInterest(_brain);
-
-            if (_addGoalClass==null)
-            {
-                return;
-            }
-            _addGoalClass.AddMoveAtomGoal(other.gameObject.transform.position);
-
+            addGoalClass.AddMoveAtomGoal(interestSpawner.transform.position);
         }
 
     }
