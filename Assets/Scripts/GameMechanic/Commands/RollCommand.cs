@@ -63,6 +63,7 @@ namespace Assets.Scripts.GameMechanic.Commands
         public override void StopCommand()
         {
             Target.UnitView.Animator.SetBool("Roll", false);
+            Target.StopMove();
         }
 
         public override bool CanBeInterruptedByCommand(BaseCommand newCommand)

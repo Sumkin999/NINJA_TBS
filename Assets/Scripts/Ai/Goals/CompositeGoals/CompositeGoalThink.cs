@@ -38,7 +38,7 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                 if (InterestBrain.CurrentInterestObject is PlayerInterestObject)
                 {
 
-                    if (!(GoalsList[0] is CompositeGoalAttackPlayer) 
+                    if ((GoalsList.Count>0) && (!(GoalsList[0] is CompositeGoalAttackPlayer)) 
                         && BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State!=CommandControllerState.AttackComand)
                     {
 

@@ -74,9 +74,10 @@ namespace Assets.Scripts.GameMechanic
                 return;
 
             command.StopCommand();
-            CurrentCommand = new IdleCommand(GetComponent<GameUnit>());
+            GameUnit gameUnit = GetComponent<GameUnit>();
+            CurrentCommand = new IdleCommand(gameUnit);
 
-            if (command.PauseOnComplete)
+            if ((gameUnit == Game.PlayerUnit) && (command.PauseOnComplete))
                 Game.GameTime.PauseGame();
         }
 
