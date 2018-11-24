@@ -105,7 +105,7 @@ namespace Assets.Scripts.Interface
                 {
                     if (hit.transform.gameObject.CompareTag("Enemy"))
                     {
-                        if (Game.PlayerUnit.Target == null)
+                        if (Game.PlayerUnit.Target != hit.collider.GetComponent<GameUnit>())
                         {
                             SelectDeselectTarget(hit.transform.gameObject);
                         }

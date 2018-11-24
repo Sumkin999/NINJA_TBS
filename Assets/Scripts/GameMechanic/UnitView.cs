@@ -10,6 +10,7 @@ namespace Assets.Scripts.GameMechanic
         public Animator Animator;
         public Vector3 Offset;
         public float CurrentDirection;
+        public float VelocitySmooth = 10;
 
         public void Update()
         {
@@ -26,12 +27,15 @@ namespace Assets.Scripts.GameMechanic
 
             Vector3 reletiveVelocity = transform.InverseTransformVector(Velocity);
 
-            Animator.SetFloat("Move", reletiveVelocity.x);
-            Animator.SetFloat("Strafe", reletiveVelocity.z);
-
             Rotate();
 
             CurrentDirection = Vector3.SignedAngle(Vector3.forward, transform.forward,Vector3.up);
+
+            if (Game.GameTime.IsOnPause)
+                return;
+
+            Animator.SetFloat("Move", Mathf.Lerp(Animator.GetFloat("Move"), reletiveVelocity.x, Time.deltaTime * VelocitySmooth));
+            Animator.SetFloat("Strafe", Mathf.Lerp(Animator.GetFloat("Strafe"), reletiveVelocity.z, Time.deltaTime * VelocitySmooth));
         }
 
         Vector2 RotateVector(Vector2 point, float angle)
