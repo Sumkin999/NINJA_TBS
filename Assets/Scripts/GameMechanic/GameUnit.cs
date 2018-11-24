@@ -19,6 +19,7 @@ namespace Assets.Scripts.GameMechanic
         public UnitSound UnitSound;
 
         public float Health = 100;
+        public float MaxHealth;
 
         public bool IsMoving { get; private set; }
 
@@ -29,6 +30,7 @@ namespace Assets.Scripts.GameMechanic
         void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            MaxHealth = Health;
         }
 
         public void MoveTo(Vector3 destination, float speed)
@@ -109,13 +111,22 @@ namespace Assets.Scripts.GameMechanic
             Health -= damage;
             if (Health<=0)
             {
+                Health = 0f;
                 Death();
             }
         }
 
-        public void Death()
+        private void Death()
         {
-            
+            UnitCommandController unitCommandController = GetComponent<UnitCommandController>();
+            unitCommandController.TryToApplyCommand(new DeathCommand(this));
+            GetComponent<Collider>().enabled = false;
+            WeaponTrigger.GetComponent<Collider>().enabled = false;
+            navMeshAgent.enabled = false;
+            if (Game.PlayerUnit.Target == this)
+            {
+                Game.PlayerUnit.Target = null;
+            }
         }
     }
 }

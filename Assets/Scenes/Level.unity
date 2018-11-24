@@ -383,7 +383,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1645907103}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &496023545 stripped
 GameObject:
@@ -920,13 +920,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  RotationSpeed: 6
-  Direction: 180
+  RotationSpeed: 8
+  Direction: 0
   UnitView: {fileID: 176610973}
   Target: {fileID: 0}
   WeaponTrigger: {fileID: 513022674}
   UnitSound: {fileID: 1245846258}
   Health: 100
+  MaxHealth: 0
 --- !u!114 &1245846256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +984,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1645907103}
+    m_TransformParent: {fileID: 1594050465}
     m_Modifications:
     - target: {fileID: 400156, guid: ff52e6a0420b12b43bc5e981d603c546, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1280,6 +1281,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1594050464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1594050465}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1594050465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1594050464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.45656204, y: 1.072, z: 4.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 496023546}
+  - {fileID: 1645907103}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1645907099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1328,7 @@ GameObject:
   - component: {fileID: 1645907110}
   - component: {fileID: 1645907109}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyMechanic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1364,14 +1395,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645907099}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45656204, y: 1.072, z: 4.02}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 496023546}
   - {fileID: 473695141}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1594050465}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1645907106
 MonoBehaviour:
@@ -1385,13 +1415,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
-  RotationSpeed: 60
+  RotationSpeed: 6
   Direction: 0
   UnitView: {fileID: 496023547}
   Target: {fileID: 0}
   WeaponTrigger: {fileID: 59636470}
   UnitSound: {fileID: 0}
   Health: 100
+  MaxHealth: 0
 --- !u!195 &1645907107
 NavMeshAgent:
   m_ObjectHideFlags: 0

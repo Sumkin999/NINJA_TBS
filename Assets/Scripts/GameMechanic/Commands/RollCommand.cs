@@ -72,6 +72,14 @@ namespace Assets.Scripts.GameMechanic.Commands
             {
                 return false;
             }
+            if (newCommand is AttackCommand)
+            {
+                return false;
+            }
+            if (newCommand is RollCommand)
+            {
+                return false;
+            }
 
             return true;
         }
