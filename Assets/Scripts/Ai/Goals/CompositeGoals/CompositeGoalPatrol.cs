@@ -21,10 +21,17 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
 
         public override void Avtivate()
         {
+            Vector3 v= new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
+                + BrainBase.GameUnit.gameObject.transform.position;
+            GoalsList.Add(new AtomGoalMove(BrainBase,InterestBrain,AddGoalClass,v));
 
-            GoalsList.Add(new AtomGoalMove(BrainBase,InterestBrain,AddGoalClass,Vector3.zero));
-            GoalsList.Add(new AtomGoalMove(BrainBase, InterestBrain, AddGoalClass, Vector3.zero));
-            GoalsList.Add(new AtomGoalMove(BrainBase, InterestBrain, AddGoalClass, Vector3.zero));
+            v = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
+                + BrainBase.GameUnit.gameObject.transform.position;
+            GoalsList.Add(new AtomGoalMove(BrainBase, InterestBrain, AddGoalClass, v));
+
+            v = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
+                + BrainBase.GameUnit.gameObject.transform.position;
+            GoalsList.Add(new AtomGoalMove(BrainBase, InterestBrain, AddGoalClass, v));
 
             GoalState = GoalState.Active;
         }

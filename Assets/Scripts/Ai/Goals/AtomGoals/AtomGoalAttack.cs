@@ -23,7 +23,7 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
         }
         protected GameUnit UnitTarget;
 
-
+        
         public override void UpdateAction()
         {
             
@@ -47,10 +47,7 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
 
             attackCommand.PauseOnComplete = false;
             unitCommandController.TryToApplyCommand(attackCommand);
-            /*UnpauseOnTargetSelected = true;
-            OnTargetSelected();
-            _moveCommand.PauseOnComplete = false;
-            unitCommandController.TryToApplyCommand(_moveCommand);*/
+            
 
             
             GoalState = GoalState.Completed;

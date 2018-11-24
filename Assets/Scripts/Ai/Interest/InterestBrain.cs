@@ -40,7 +40,7 @@ namespace Assets.Scripts.Ai.Interest
 
                     if (InterestPoints[i].IsComplteted)
                     {
-                        Debug.Log("Remove interest!");
+
                         if (InterestPoints[i] == CurrentInterestObject)
                         {
                             CurrentInterestObject = null;

@@ -32,13 +32,20 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
             GoalsList.Add(new AtomGoalAttack(BrainBase, InterestBrain, AddGoalClass, TargetUnit));
 
 
-            Debug.Log("Attack!!!");
+            
             GoalState = GoalState.Active;
         }
 
-        public override void CompletedAction()
+        public override void UpdateAction()
         {
-            Debug.Log("AttackGoal Complteted!!!");
+            ProcessAllSubGoals();
+
+            if (InterestBrain.CurrentInterestObject==null)
+            {
+                GoalState=GoalState.Failed;
+            }
         }
+
+        
     }
 }

@@ -6,7 +6,9 @@ namespace Assets.Scripts.GameMechanic
     public enum CommandControllerState
     {
         CommandRun,
-        WaitingCommand
+        WaitingCommand,
+        AttackComand,
+        RollCommand
     };
 
     public class UnitCommandController:MonoBehaviour
@@ -42,6 +44,27 @@ namespace Assets.Scripts.GameMechanic
             if (CurrentCommand!= null)
             {
                 CurrentCommand.UpdateCommand();
+
+                if (CurrentCommand is AttackCommand)
+                {
+                    State=CommandControllerState.AttackComand;
+                    return;
+                    
+                }
+                if (CurrentCommand is MoveCommand)
+                {
+                    State = CommandControllerState.CommandRun;
+                    return;
+                }
+                if (CurrentCommand is RollCommand)
+                {
+                    State = CommandControllerState.RollCommand;
+                    return;
+                }
+                
+                State = CommandControllerState.WaitingCommand;
+
+                
             }
         }
 

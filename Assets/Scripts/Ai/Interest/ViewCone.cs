@@ -46,13 +46,15 @@ namespace Assets.Scripts.Ai.Interest
                 return;
             }
 
+            
             interestSpawner.RemovePlayerInterest(_brain);
 
             if (_addGoalClass==null)
             {
                 return;
             }
-            _addGoalClass.AddMoveAtomGoal(other.gameObject.GetComponent<GameUnit>());
+            _addGoalClass.AddMoveAtomGoal(other.gameObject.transform.position);
+
         }
 
     }

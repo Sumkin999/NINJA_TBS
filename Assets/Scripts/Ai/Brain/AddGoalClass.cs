@@ -7,6 +7,7 @@ using Assets.Scripts.Ai.Goals.CompositeGoals;
 using Assets.Scripts.Ai.Goals.GoalsBase;
 using Assets.Scripts.Ai.Interest;
 using Assets.Scripts.GameMechanic;
+using UnityEngine;
 
 namespace Assets.Scripts.Ai.Brain
 {
@@ -32,6 +33,20 @@ namespace Assets.Scripts.Ai.Brain
                     goalCompostite.GoalsList.Add(new AtomGoalMove(_brain, _interestBrain, this, gameUnit));
                 }
             }
+
+        }
+        public void AddMoveAtomGoal(Vector3 targetPosition)
+        {
+            _brain.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalMove(_brain, _interestBrain, this, targetPosition));
+            /*if (_brain.CompositeGoalThink.GoalsList.Count > 0)
+            {
+                GoalCompostite goalCompostite = _brain.CompositeGoalThink.GoalsList[0] as GoalCompostite;
+
+                if (goalCompostite != null)
+                {
+                    goalCompostite.GoalsList.Insert(0,new AtomGoalMove(_brain, _interestBrain, this, targetPosition));
+                }
+            }*/
 
         }
     }

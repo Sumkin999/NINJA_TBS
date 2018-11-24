@@ -35,12 +35,16 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
 
         private MoveCommand _moveCommand;
 
+        private float _stuckTimer;
+        private Vector3 _lastPositionVector3;
+        
         public override void Avtivate()
         {
             if (UnitTarget==null)
             {
-                Destination = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
-                + BrainBase.GameUnit.gameObject.transform.position;
+                
+                //Destination = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
+                //+ BrainBase.GameUnit.gameObject.transform.position;
             }
             else
             {
@@ -53,7 +57,9 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
             _moveCommand = new MoveCommand(Destination, BrainBase.GameUnit);
             _moveCommand.PauseOnComplete = false;
             unitCommandController.TryToApplyCommand(_moveCommand);
-            
+
+
+            _lastPositionVector3 = BrainBase.GameUnit.gameObject.transform.position;
 
             GoalState = GoalState.Active;
         }
@@ -77,6 +83,19 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
                 }*/
 
             }
+
+            _stuckTimer += Time.deltaTime;
+            if (_stuckTimer>0.5f)
+            {
+                if (Vector3.Distance(BrainBase.GameUnit.gameObject.transform.position,_lastPositionVector3)<0.1f)
+                {
+                    UnitCommandController unitCommandController = BrainBase.GameUnit.GetComponent<UnitCommandController>();
+                    unitCommandController.TryToApplyCommand(_moveCommand);
+                }
+                _lastPositionVector3 = BrainBase.GameUnit.gameObject.transform.position;
+                _stuckTimer = 0f;
+            }
+
 
             if (Vector3.Distance(Destination, BrainBase.GameUnit.gameObject.transform.position)<1.75f)
             {

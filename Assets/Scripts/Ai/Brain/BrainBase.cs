@@ -33,7 +33,7 @@ namespace Assets.Scripts.Ai.Brain
             }
             if (!contains)
             {
-                Debug.Log("Add interest!");
+
                 InterestBrain.InterestPoints.Add(interestObjectAdd);
             }
         }
@@ -60,6 +60,7 @@ namespace Assets.Scripts.Ai.Brain
         {
             GameUnit = GetComponent<GameUnit>();
             InterestBrain=new InterestBrain(this);
+            AddGoalClass=new AddGoalClass(this,InterestBrain);
 
             CompositeGoalThink=new CompositeGoalThink(this,InterestBrain,AddGoalClass);
             CompositeGoalThink.Avtivate();
@@ -75,8 +76,10 @@ namespace Assets.Scripts.Ai.Brain
 
             InterestBrain.UpdateInterestObjects();
 
-            if (CompositeGoalThink.GoalState==GoalState.Completed)
+            if (CompositeGoalThink.GoalState==GoalState.Completed
+                || CompositeGoalThink.GoalState==GoalState.Failed)
             {
+
                 CompositeGoalThink.Avtivate();
             }
         }

@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Scripts.Ai.Brain;
 using Assets.Scripts.Ai.Goals.GoalsBase;
 using Assets.Scripts.Ai.Interest;
+using Assets.Scripts.GameMechanic;
 using UnityEngine;
 
 namespace Assets.Scripts.Ai.Goals.CompositeGoals
@@ -37,16 +38,21 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                 if (InterestBrain.CurrentInterestObject is PlayerInterestObject)
                 {
 
-                    if (!(GoalsList[0] is CompositeGoalAttackPlayer))
+                    if (!(GoalsList[0] is CompositeGoalAttackPlayer) 
+                        && BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State!=CommandControllerState.AttackComand)
                     {
 
                         PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
                         GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+
+
+                        
                     }
                     
                 }
                 
             }
+            
         }
     }
 }
