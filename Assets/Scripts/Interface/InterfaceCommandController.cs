@@ -105,26 +105,36 @@ namespace Assets.Scripts.Interface
                 {
                     if (hit.transform.gameObject.CompareTag("Enemy"))
                     {
-                        SelectDeselectTarget(hit.transform.gameObject);
-                    }
-                    else
-                    {
-
-
-                        if (SelectedCommand == null )
+                        if (Game.PlayerUnit.Target == null)
                         {
-                            if (unitCommandController.CurrentCommand == null || unitCommandController.CurrentCommand.CanBeInterruptedByCommand(new MoveCommand(hit.point, Game.PlayerUnit)))
-                            {
-                                SelectedCommand = moveCommand;
-                                SelectedCommand.OnTerrainClick(hit.point);
-                            }
+                            SelectDeselectTarget(hit.transform.gameObject);
                         }
                         else
                         {
-                            SelectedCommand.OnTerrainClick(hit.point);
+                            ClickPointToCommand(hit.transform.position);
                         }
                     }
+                    else
+                    {
+                        ClickPointToCommand(hit.point);
+                    }
                 }
+            }
+        }
+
+        private void ClickPointToCommand(Vector3 point)
+        {
+            if (SelectedCommand == null)
+            {
+                if (unitCommandController.CurrentCommand == null || unitCommandController.CurrentCommand.CanBeInterruptedByCommand(new MoveCommand(point, Game.PlayerUnit)))
+                {
+                    SelectedCommand = moveCommand;
+                    SelectedCommand.OnTerrainClick(point);
+                }
+            }
+            else
+            {
+                SelectedCommand.OnTerrainClick(point);
             }
         }
 
