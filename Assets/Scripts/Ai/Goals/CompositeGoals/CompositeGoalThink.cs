@@ -43,34 +43,45 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                     {
                         return;
                     }
-                    if (!(GoalsList[0] is CompositeGoalAttackPlayer) )
+                    PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
+                    if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand)
                     {
-                        
-                        PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
-                        CommandControllerState cstate =
-                            BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State;
-
-
-                        if ( cstate!= CommandControllerState.AttackComand)
-                        {
-                            GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
-
-                            
-                            if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand)
-                            {
-                                BrainBase.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
-                            }
-
-                            
-                        }
-                        else
-                        {
-                            AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
-                        }
-
-
-                       
+                        AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
+                        //BrainBase.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
                     }
+                    else
+                    {
+                        if (!(GoalsList[0] is CompositeGoalAttackPlayer))
+                        {
+
+                            
+                            CommandControllerState cstate =
+                                BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State;
+
+
+                            if (cstate != CommandControllerState.AttackComand)
+                            {
+                                GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+
+
+                                /*if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand)
+                                {
+                                    BrainBase.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+                                }*/
+
+
+                            }
+                            /*else
+                            {
+                                AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
+                            }*/
+
+
+
+                        }
+                    }
+
+                    
                     
                 }
                 
