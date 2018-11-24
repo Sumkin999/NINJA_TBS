@@ -49,5 +49,43 @@ namespace Assets.Scripts.Ai.Brain
             }*/
 
         }
+
+        
+        private int _rollCheckChance=90;
+        private float _betweenRollTimer = 3f;
+        private bool _toRoll;
+        
+        public void TryAddRollAtomGoal(GameUnit playerUnit)
+        {
+
+            _betweenRollTimer -= Time.deltaTime;
+            if (playerUnit)
+            {
+                int rollChance = UnityEngine.Random.Range(0, 100);
+                if (rollChance<_rollCheckChance)
+                {
+                    _toRoll = true;
+                    _betweenRollTimer = 3f;
+                }
+            }
+            
+                
+                
+                if (_toRoll)
+                {
+                    if (playerUnit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand
+                    && _brain.GameUnit.gameObject.GetComponent<UnitCommandController>().State!=CommandControllerState.AttackComand)
+                    {
+                        _brain.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(_brain, _interestBrain, this, playerUnit));
+                        _toRoll = false;
+                    }
+                    
+                }
+                
+                
+            
+            
+           
+        }
     }
 }

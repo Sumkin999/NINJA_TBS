@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Scripts.Ai.Brain;
+using Assets.Scripts.Ai.Goals.AtomGoals;
 using Assets.Scripts.Ai.Goals.GoalsBase;
 using Assets.Scripts.Ai.Interest;
 using Assets.Scripts.GameMechanic;
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
             GoalState = GoalState.Active;
         }
 
+
         public override void UpdateAction()
         {
             ProcessAllSubGoals();
@@ -37,16 +39,37 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
 
                 if (InterestBrain.CurrentInterestObject is PlayerInterestObject)
                 {
-
-                    if (!(GoalsList[0] is CompositeGoalAttackPlayer) 
-                        && BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State!=CommandControllerState.AttackComand)
+                    if (GoalsList.Count<1)
                     {
-
-                        PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
-                        GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
-
-
+                        return;
+                    }
+                    if (!(GoalsList[0] is CompositeGoalAttackPlayer) )
+                    {
                         
+                        PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
+                        CommandControllerState cstate =
+                            BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State;
+
+
+                        if ( cstate!= CommandControllerState.AttackComand)
+                        {
+                            GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+
+                            
+                            if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand)
+                            {
+                                BrainBase.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+                            }
+
+                            
+                        }
+                        else
+                        {
+                            AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
+                        }
+
+
+                       
                     }
                     
                 }
