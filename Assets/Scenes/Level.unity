@@ -1540,8 +1540,8 @@ MonoBehaviour:
   MinIdleTimer: 2
   MaxIdleTimer: 5
   MaxPatrolRadius: 5
-  TimeMinBetweenRoll: 2
-  RollChance: 90
+  TimeMinBetweenRoll: 1
+  RollChance: 99
   TimeMinBetweenHits: 0
   TimeMaxBetweenHits: 0
   BotsAggredWithThis: []
