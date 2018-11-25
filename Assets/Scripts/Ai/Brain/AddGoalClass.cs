@@ -78,7 +78,7 @@ namespace Assets.Scripts.Ai.Brain
             }
         }
 
-        public void TryAddRollAtomGoal(GameUnit playerUnit)
+        public bool TryAddRollAtomGoal(GameUnit playerUnit)
         {
    
             if (_toRoll)
@@ -88,9 +88,11 @@ namespace Assets.Scripts.Ai.Brain
                 {
                     _brain.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(_brain, _interestBrain, this, playerUnit));
                     _toRoll = false;
+                    return true;
                 }
                     
             }
+            return false;
         }
     }
 }

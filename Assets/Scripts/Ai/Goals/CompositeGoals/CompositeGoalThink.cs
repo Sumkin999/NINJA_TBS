@@ -57,9 +57,10 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                     if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand
                         && 
                         CheckAnglePlayerFront(playerInterestObject.Unit)>-0.25f 
-                        && Vector3.Distance(BrainBase.GameUnit.gameObject.transform.position,playerInterestObject.Unit.gameObject.transform.position)<4f)
+                        && Vector3.Distance(BrainBase.GameUnit.gameObject.transform.position,playerInterestObject.Unit.gameObject.transform.position)<4f
+                        && AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit))
                     {
-                        AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
+                        
                         
                     }
                     else
