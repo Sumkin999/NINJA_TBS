@@ -22,23 +22,37 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
             UnitPlayer = unitPlayer;
         }
         protected GameUnit UnitPlayer;
+        private UnitCommandController _unitCommandController;
         private float _rollTimer = 1f;
+
+        private Vector3 _rollDirection;
 
         public override void Avtivate()
         {
-            Vector3 rollDirectionVector = UnitPlayer.gameObject.transform.position -
-                                          BrainBase.GameUnit.gameObject.transform.position;
+            BrainBase.GameUnit.Target = UnitPlayer;
+            if (BrainBase.CompositeGoalThink.CheckAnglePlayerLeftRight(UnitPlayer)>-0.25f)
+            {
 
-            rollDirectionVector.Normalize();
-            rollDirectionVector *= -1;
-            rollDirectionVector.y = 0;
+                Vector3 rl = BrainBase.gameObject.transform.position - BrainBase.gameObject.transform.right;
+                Vector3 rv = BrainBase.gameObject.transform.position - UnitPlayer.gameObject.transform.position;
+                _rollDirection = Vector3.Lerp(rl, rv,
+                    Vector3.Distance(BrainBase.gameObject.transform.position, UnitPlayer.gameObject.transform.position)*0.3f);
+
+            }
+            else
+            {
+                _rollDirection = BrainBase.gameObject.transform.position - UnitPlayer.gameObject.transform.position;
+
+            }
+            _rollDirection.y = 0;
 
 
-            UnitCommandController unitCommandController = BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>();
-            float angle = BrainBase.GameUnit.GetAngle(rollDirectionVector);//UnitPlayer.gameObject.transform.position);
+
+            _unitCommandController = BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>();
+            float angle = BrainBase.GameUnit.GetAngle(_rollDirection);//UnitPlayer.gameObject.transform.position);
             RollCommand rollCommand = new RollCommand(angle, BrainBase.GameUnit);
             rollCommand.PauseOnComplete = false;
-            unitCommandController.TryToApplyCommand(rollCommand);
+            _unitCommandController.TryToApplyCommand(rollCommand);
 
             GoalState=GoalState.Active;
             
@@ -47,6 +61,11 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
         public override void UpdateAction()
         {
             _rollTimer -= Time.deltaTime;
+
+            if (_unitCommandController.State==CommandControllerState.Hitted)
+            {
+                _rollTimer = 0;
+            }
 
             if (_rollTimer<0)
             {

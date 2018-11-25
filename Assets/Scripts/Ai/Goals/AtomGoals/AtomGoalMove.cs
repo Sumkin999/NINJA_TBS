@@ -42,13 +42,14 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
         {
             if (UnitTarget==null)
             {
-                
+                BrainBase.GameUnit.Target = null;
                 //Destination = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
                 //+ BrainBase.GameUnit.gameObject.transform.position;
             }
             else
             {
                 Destination = UnitTarget.gameObject.transform.position;
+                BrainBase.GameUnit.Target = UnitTarget;
             }
             
             

@@ -40,7 +40,7 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
 
             }
 
-
+            BrainBase.GameUnit.Target = null;
             UnitCommandController unitCommandController = BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>();
             float angle = BrainBase.GameUnit.GetAngle(UnitTarget.gameObject.transform.position);
             AttackCommand attackCommand = new AttackCommand(angle, "Attack01", BrainBase.GameUnit);

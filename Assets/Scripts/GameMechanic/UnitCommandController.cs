@@ -8,7 +8,8 @@ namespace Assets.Scripts.GameMechanic
         CommandRun,
         WaitingCommand,
         AttackComand,
-        RollCommand
+        RollCommand,
+        Hitted
     };
 
     public class UnitCommandController:MonoBehaviour
@@ -59,6 +60,11 @@ namespace Assets.Scripts.GameMechanic
                 if (CurrentCommand is RollCommand)
                 {
                     State = CommandControllerState.RollCommand;
+                    return;
+                }
+                if (CurrentCommand is HitCommand)
+                {
+                    State=CommandControllerState.Hitted;
                     return;
                 }
                 

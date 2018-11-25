@@ -43,41 +43,30 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                     {
                         return;
                     }
+                    
                     PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
-                    if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand)
+                    
+                    AddGoalClass.DecreaseRollChanceTimer();
+
+                    if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand
+                        && 
+                        CheckAnglePlayerFront(playerInterestObject.Unit)>-0.25f 
+                        && Vector3.Distance(BrainBase.GameUnit.gameObject.transform.position,playerInterestObject.Unit.gameObject.transform.position)<4f)
                     {
                         AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
-                        //BrainBase.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+                        
                     }
                     else
                     {
                         if (!(GoalsList[0] is CompositeGoalAttackPlayer))
-                        {
-
-                            
+                        {                  
                             CommandControllerState cstate =
                                 BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State;
-
 
                             if (cstate != CommandControllerState.AttackComand)
                             {
                                 GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
-
-
-                                /*if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand)
-                                {
-                                    BrainBase.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalRoll(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
-                                }*/
-
-
                             }
-                            /*else
-                            {
-                                AddGoalClass.TryAddRollAtomGoal(playerInterestObject.Unit);
-                            }*/
-
-
-
                         }
                     }
 
@@ -88,5 +77,33 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
             }
             
         }
-    }
+
+        public float CheckAnglePlayerFront(GameUnit playerUnit)
+        {
+            Vector3 playerToThis = BrainBase.GameUnit.gameObject.transform.position -
+                                   playerUnit.gameObject.transform.position;
+
+            playerToThis.Normalize();
+
+            return Vector3.Dot(playerToThis, playerUnit.gameObject.transform.forward);
+        }
+
+
+        
+        public float CheckAnglePlayerLeftRight(GameUnit playerUnit)
+        {
+            var relativePoint = playerUnit.gameObject.transform.InverseTransformPoint(BrainBase.GameUnit.gameObject.transform.position);
+            /*if (relativePoint.x < 0.0)
+            {
+                Debug.Log("Object is to the left");
+            }
+            else
+            {
+                Debug.Log("Object is to the right");
+            }*/
+            return relativePoint.x;
+
+
+        }
+}
 }
