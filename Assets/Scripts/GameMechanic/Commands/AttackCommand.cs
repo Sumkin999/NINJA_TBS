@@ -14,8 +14,8 @@ namespace Assets.Scripts.GameMechanic.Commands
         private Vector3 moveTarget;
         private float timer = 0f;
         public float Damage = 10;
-        public float TimeToActivateTrigger = 0.2f;
-        public float TimeToDeactivateTrigger = 0.45f;
+        public float TimeToActivateTrigger = 0.3f;
+        public float TimeToDeactivateTrigger = 0.55f;
 
 
         public AttackCommand(float direction, string animatorTrigger, GameUnit target)

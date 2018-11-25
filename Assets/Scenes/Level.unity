@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RayDistance: 1
-  RayRadius: 5
+  RayRadius: 7
 --- !u!4 &473695141
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,7 +1357,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1594050464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45656204, y: 1.072, z: 4.02}
+  m_LocalPosition: {x: -0.19, y: 1.072, z: 4.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 496023546}
@@ -1537,6 +1537,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameUnit: {fileID: 0}
+  MinIdleTimer: 2
+  MaxIdleTimer: 5
+  MaxPatrolRadius: 5
+  TimeMinBetweenRoll: 2
+  RollChance: 90
+  TimeMinBetweenHits: 0
+  TimeMaxBetweenHits: 0
+  BotsAggredWithThis: []
+  StartPosition: {x: 0, y: 0, z: 0}
   ViewCone: {fileID: 473695137}
 --- !u!1 &1808139303
 GameObject:
