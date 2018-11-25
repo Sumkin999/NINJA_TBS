@@ -801,6 +801,7 @@ GameObject:
   - component: {fileID: 1245846248}
   - component: {fileID: 1245846258}
   - component: {fileID: 1245846259}
+  - component: {fileID: 1245846260}
   m_Layer: 0
   m_Name: CharacterMechanic
   m_TagString: Player
@@ -991,6 +992,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af11b685be6c444e8f866e58e7f6509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1245846260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1245846247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b36ef18a41fc9b40b66a4bcb106130e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BloodParticlePrefab: {fileID: 1253804117136456, guid: b264fbc6de2b285489ebcc085cebc9c6,
+    type: 2}
 --- !u!1001 &1286318646
 Prefab:
   m_ObjectHideFlags: 0

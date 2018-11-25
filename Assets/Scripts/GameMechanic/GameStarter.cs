@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Interface;
+using Assets.Scripts.Visuals;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +13,10 @@ namespace Assets.Scripts.GameMechanic
 
             Game.PlayerUnit = GetComponent<GameUnit>();
             Game.GameTime = GetComponent<GameTime>();
-            
+            Game.MainParticleController = GetComponent<MainParticleController>();
 
-            
+
+
         }
     }
 }
