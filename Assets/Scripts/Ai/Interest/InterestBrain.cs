@@ -15,6 +15,8 @@ namespace Assets.Scripts.Ai.Interest
         }
         public BrainBase Brain { get; private set; }
 
+        public bool IsAggredByBotInterest;
+
         public InterestObject CurrentInterestObject;
         public List<InterestObject> InterestPoints = new List<InterestObject>();
 

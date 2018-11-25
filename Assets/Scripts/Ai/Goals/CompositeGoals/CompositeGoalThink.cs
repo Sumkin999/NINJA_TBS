@@ -23,13 +23,14 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
         public override void Avtivate()
         {
 
-            GoalsList.Add(new CompositeGoalPatrol(BrainBase,InterestBrain,AddGoalClass));
+            GoalsList.Add(new CompositeGoalPatrol(BrainBase,InterestBrain,AddGoalClass,
+                BrainBase.MinIdleTimer,BrainBase.MaxIdleTimer,BrainBase.MaxPatrolRadius));
             
 
             GoalState = GoalState.Active;
         }
 
-
+        private float _nextHitTimer;
         public override void UpdateAction()
         {
             ProcessAllSubGoals();
@@ -43,10 +44,15 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                     {
                         return;
                     }
-                    
+
+                    if (!Game.GameTime.IsOnPause)
+                    {
+                        _nextHitTimer -= Time.deltaTime;
+                    }
+
                     PlayerInterestObject playerInterestObject = InterestBrain.CurrentInterestObject as PlayerInterestObject;
                     
-                    AddGoalClass.DecreaseRollChanceTimer();
+                    AddGoalClass.DecreaseRollChanceTimer(BrainBase.RollChance,BrainBase.TimeMinBetweenRoll);
 
                     if (playerInterestObject.Unit.gameObject.GetComponent<UnitCommandController>().State == CommandControllerState.AttackComand
                         && 
@@ -63,10 +69,17 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
                             CommandControllerState cstate =
                                 BrainBase.GameUnit.gameObject.GetComponent<UnitCommandController>().State;
 
-                            if (cstate != CommandControllerState.AttackComand)
+                            if (_nextHitTimer<0)
                             {
-                                GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+                                if (cstate != CommandControllerState.AttackComand)
+                                {
+                                    GoalsList.Insert(0, new CompositeGoalAttackPlayer(BrainBase, InterestBrain, AddGoalClass, playerInterestObject.Unit));
+                                }
+
+                                _nextHitTimer = UnityEngine.Random.Range(BrainBase.TimeMinBetweenHits,
+                                    BrainBase.TimeMaxBetweenHits);
                             }
+                            
                         }
                     }
 

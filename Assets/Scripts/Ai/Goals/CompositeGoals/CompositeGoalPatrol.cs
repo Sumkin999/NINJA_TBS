@@ -12,26 +12,38 @@ namespace Assets.Scripts.Ai.Goals.CompositeGoals
 {
     class CompositeGoalPatrol:GoalCompostite
     {
-        public CompositeGoalPatrol(BrainBase brain, InterestBrain interestBrain, AddGoalClass addGoal) : base(brain,interestBrain,addGoal)
+        private float _minIdleTimer;
+        private float _maxIdleTimer;
+        private float _maxPatrolRadius;
+
+        public CompositeGoalPatrol(BrainBase brain, InterestBrain interestBrain, AddGoalClass addGoal
+            ,float minIdleTimer,float maxIdleTimer,float maxPatrolRadius) : base(brain,interestBrain,addGoal)
         {
             BrainBase = brain;
             InterestBrain = interestBrain;
             AddGoalClass = addGoal;
+
+            _minIdleTimer = minIdleTimer;
+            _maxIdleTimer = maxIdleTimer;
+            _maxPatrolRadius = maxPatrolRadius;
         }
 
         public override void Avtivate()
         {
-            Vector3 v= new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
-                + BrainBase.GameUnit.gameObject.transform.position;
+            Vector3 v= new Vector3(UnityEngine.Random.Range(-_maxPatrolRadius, _maxPatrolRadius), 0, UnityEngine.Random.Range(-_maxPatrolRadius, _maxPatrolRadius))
+                + BrainBase.StartPosition;
             GoalsList.Add(new AtomGoalMove(BrainBase,InterestBrain,AddGoalClass,v));
+            GoalsList.Add(new AtomGoalIdle(BrainBase,InterestBrain,AddGoalClass,UnityEngine.Random.Range(_minIdleTimer,_maxIdleTimer)));
 
-            v = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
-                + BrainBase.GameUnit.gameObject.transform.position;
+            v = new Vector3(UnityEngine.Random.Range(-_maxPatrolRadius, _maxPatrolRadius), 0, UnityEngine.Random.Range(-_maxPatrolRadius, _maxPatrolRadius))
+                + BrainBase.StartPosition;
             GoalsList.Add(new AtomGoalMove(BrainBase, InterestBrain, AddGoalClass, v));
+            GoalsList.Add(new AtomGoalIdle(BrainBase, InterestBrain, AddGoalClass, UnityEngine.Random.Range(_minIdleTimer, _maxIdleTimer)));
 
-            v = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), 0, UnityEngine.Random.Range(-10.0f, 10.0f))
-                + BrainBase.GameUnit.gameObject.transform.position;
+            v = new Vector3(UnityEngine.Random.Range(-_maxPatrolRadius, _maxPatrolRadius), 0, UnityEngine.Random.Range(-_maxPatrolRadius, _maxPatrolRadius))
+                + BrainBase.StartPosition;
             GoalsList.Add(new AtomGoalMove(BrainBase, InterestBrain, AddGoalClass, v));
+            GoalsList.Add(new AtomGoalIdle(BrainBase, InterestBrain, AddGoalClass, UnityEngine.Random.Range(_minIdleTimer, _maxIdleTimer)));
 
             GoalState = GoalState.Active;
         }

@@ -23,7 +23,12 @@ namespace Assets.Scripts.Ai.Goals.AtomGoals
         }
         protected GameUnit UnitTarget;
 
-        
+        public override void Avtivate()
+        {
+            InterestBrain.IsAggredByBotInterest = false;
+
+            GoalState=GoalState.Active;
+        }
         public override void UpdateAction()
         {
             

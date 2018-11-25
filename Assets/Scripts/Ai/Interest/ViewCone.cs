@@ -44,19 +44,25 @@ namespace Assets.Scripts.Ai.Interest
                 }
             }
 
-            foreach (var target in targets)
+            if (!brain.IsAggredByBot)
             {
-                if (!tempTargets.Contains(target))
+                foreach (var target in targets)
                 {
-                    OnRemoveTarget(target);
+                    if (!tempTargets.Contains(target))
+                    {
+                        OnRemoveTarget(target);
+                    }
                 }
             }
+            
 
             targets = tempTargets;
 
             foreach (var target in targets)
             {
                 target.SpawnPlayerInterest(brain);
+
+                brain.AggroOthers(target);
             }
         }
 

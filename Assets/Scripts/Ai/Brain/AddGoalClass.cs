@@ -20,6 +20,8 @@ namespace Assets.Scripts.Ai.Brain
         {
             _brain = brain;
             _interestBrain = interestBrain;
+
+            _betweenRollTimer = _brain.TimeMinBetweenRoll;
         }
 
         public void AddMoveAtomGoal(GameUnit gameUnit)
@@ -38,35 +40,41 @@ namespace Assets.Scripts.Ai.Brain
         public void AddMoveAtomGoal(Vector3 targetPosition)
         {
             _brain.CompositeGoalThink.GoalsList.Insert(0, new AtomGoalMove(_brain, _interestBrain, this, targetPosition));
-            /*if (_brain.CompositeGoalThink.GoalsList.Count > 0)
-            {
-                GoalCompostite goalCompostite = _brain.CompositeGoalThink.GoalsList[0] as GoalCompostite;
-
-                if (goalCompostite != null)
-                {
-                    goalCompostite.GoalsList.Insert(0,new AtomGoalMove(_brain, _interestBrain, this, targetPosition));
-                }
-            }*/
+            
 
         }
 
         
         
-        private float _betweenRollTimer = 2f;
+        private float _betweenRollTimer ;
         private bool _toRoll;
 
-        public void DecreaseRollChanceTimer()
+        public void DecreaseRollChanceTimer(int rollChance,float betweenRollTimer)
         {
             if (!_toRoll)
             {
-                _betweenRollTimer -= Time.deltaTime;
+                if (!Game.GameTime.IsOnPause)
+                {
+                    _betweenRollTimer -= Time.deltaTime;
+                }
+                
             }
             
             
             if (_betweenRollTimer < 0 )
             {
-                _toRoll = true;
-                _betweenRollTimer = 2f;          
+                int rchance = UnityEngine.Random.Range(0, 100);
+
+                if (rchance<rollChance)
+                {
+                    _toRoll = true;
+                }
+                else
+                {
+                    _toRoll = false;
+                }
+                
+                _betweenRollTimer = betweenRollTimer;          
             }
         }
 
