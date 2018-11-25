@@ -113,6 +113,7 @@ namespace Assets.Scripts.GameMechanic
         public void DealDamage(float damage)
         {
             Health -= damage;
+            Game.MainParticleController.SpawnParticleBlood(transform.position);
             if (Health<=0)
             {
                 Health = 0f;

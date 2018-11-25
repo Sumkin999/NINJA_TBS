@@ -16,7 +16,7 @@ namespace Assets.Scripts.GameMechanic
                 GameUnit enemyGameUnit = other.GetComponent<GameUnit>();
                 Triggered(enemyGameUnit);
 
-                Game.MainParticleController.SpawnParticleBlood(other.ClosestPointOnBounds(transform.position));
+                //Game.MainParticleController.SpawnParticleBlood(other.ClosestPointOnBounds(transform.position));
             }
         }
 
