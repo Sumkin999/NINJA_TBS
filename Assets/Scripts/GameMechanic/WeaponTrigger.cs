@@ -11,12 +11,13 @@ namespace Assets.Scripts.GameMechanic
             if (other.gameObject == Caster.gameObject)
                 return;
 
+            if (Caster.CompareTag("Enemy") && other.CompareTag("Enemy") && !Game.EnemyFriendlyFire)
+                return;
+
             if (other.CompareTag("Enemy") || other.CompareTag("Player"))
             {
                 GameUnit enemyGameUnit = other.GetComponent<GameUnit>();
                 Triggered(enemyGameUnit);
-
-                //Game.MainParticleController.SpawnParticleBlood(other.ClosestPointOnBounds(transform.position));
             }
         }
 

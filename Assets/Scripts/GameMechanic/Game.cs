@@ -12,6 +12,6 @@ namespace Assets.Scripts.GameMechanic
         public static InterfaceMainController InterfaceMainController;
         public static List<GameUnit> Enemies = new List<GameUnit>();
         public static MainParticleController MainParticleController;
-
+        public static bool EnemyFriendlyFire = false;
     }
 }

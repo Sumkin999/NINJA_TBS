@@ -945,8 +945,11 @@ MonoBehaviour:
   Target: {fileID: 0}
   WeaponTrigger: {fileID: 936247212}
   UnitSound: {fileID: 0}
-  Health: 100
+  Health: 50
   MaxHealth: 0
+  Stamina: 100
+  MaxStamina: 0
+  StaninaRecovery: 10
 --- !u!136 &548868275
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1402,8 +1405,11 @@ MonoBehaviour:
   Target: {fileID: 0}
   WeaponTrigger: {fileID: 1741686501}
   UnitSound: {fileID: 0}
-  Health: 100
+  Health: 50
   MaxHealth: 0
+  Stamina: 100
+  MaxStamina: 0
+  StaninaRecovery: 10
 --- !u!136 &739213441
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1995,6 +2001,9 @@ MonoBehaviour:
   UnitSound: {fileID: 1245846258}
   Health: 100
   MaxHealth: 0
+  Stamina: 100
+  MaxStamina: 0
+  StaninaRecovery: 10
 --- !u!114 &1245846256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2784,8 +2793,11 @@ MonoBehaviour:
   Target: {fileID: 0}
   WeaponTrigger: {fileID: 59636470}
   UnitSound: {fileID: 0}
-  Health: 100
+  Health: 50
   MaxHealth: 0
+  Stamina: 100
+  MaxStamina: 0
+  StaninaRecovery: 10
 --- !u!195 &1645907107
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2983,8 +2995,11 @@ MonoBehaviour:
   Target: {fileID: 0}
   WeaponTrigger: {fileID: 985215654}
   UnitSound: {fileID: 0}
-  Health: 100
+  Health: 50
   MaxHealth: 0
+  Stamina: 100
+  MaxStamina: 0
+  StaninaRecovery: 10
 --- !u!136 &1678639472
 CapsuleCollider:
   m_ObjectHideFlags: 0

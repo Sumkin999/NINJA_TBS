@@ -62,7 +62,7 @@ namespace Assets.Scripts.Interface
 
         public void UpdateStaminaSlider()
         {
-            
+            StaminSlider.value = Game.PlayerUnit.Stamina / Game.PlayerUnit.MaxStamina;
         }
 
         public void PlayerTargetControl()

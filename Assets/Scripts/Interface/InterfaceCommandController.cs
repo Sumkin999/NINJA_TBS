@@ -142,7 +142,7 @@ namespace Assets.Scripts.Interface
         {
             foreach (var command in AllCommands)
             {
-                if (command.State == CommandState.Hidden)
+                if ((command.State == CommandState.Hidden) || (command.StaminaCost>Game.PlayerUnit.Stamina))
                 {
                     command.CommandButton.gameObject.SetActive(false);
                 }

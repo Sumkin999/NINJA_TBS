@@ -11,12 +11,18 @@ namespace Assets.Scripts.Interface.InterfaceCommand
         public CommandState State;
         public CommandButton CommandButton;
         public bool UnpauseOnTargetSelected;
+        public float StaminaCost;
 
         public virtual void OnSelectCommand() {}
         public virtual void UpdateSelection() {}
 
         public void OnTargetSelected()
         {
+            if (StaminaCost>Game.PlayerUnit.Stamina)
+                return;
+
+            Game.PlayerUnit.DecreaseStamina(StaminaCost);
+
             State = CommandState.Active;
             Game.InterfaceCommandController.RunCommand(this);
 

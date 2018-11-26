@@ -21,6 +21,10 @@ namespace Assets.Scripts.GameMechanic
         public float Health = 100;
         public float MaxHealth;
 
+        public float Stamina = 100;
+        public float MaxStamina;
+        public float StaninaRecovery = 5;
+
         public bool IsMoving { get; private set; }
 
         public Vector3 GetDestination { get { return navMeshAgent.destination; } }
@@ -31,10 +35,16 @@ namespace Assets.Scripts.GameMechanic
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             MaxHealth = Health;
+            MaxStamina = Stamina;
             if (CompareTag("Enemy"))
             {
                 Game.Enemies.Add(this);
             }
+        }
+
+        void Update()
+        {
+            UpdateStamina();
         }
 
         public void MoveTo(Vector3 destination, float speed)
@@ -131,6 +141,35 @@ namespace Assets.Scripts.GameMechanic
             if (Game.PlayerUnit.Target == this)
             {
                 Game.PlayerUnit.Target = null;
+            }
+        }
+
+        private void UpdateStamina()
+        {
+            if (Game.GameTime.IsOnPause)
+                return;
+
+            if (Stamina < MaxStamina)
+            {
+                Stamina += StaninaRecovery * Time.deltaTime;
+            }
+        }
+
+        public void RecoverStamina(float value)
+        {
+            Stamina += value;
+            if (Stamina>MaxStamina)
+            {
+                Stamina = MaxStamina;
+            }
+        }
+
+        public void DecreaseStamina(float cost)
+        {
+            Stamina -= cost;
+            if (Stamina<0)
+            {
+                Stamina = 0f;
             }
         }
     }

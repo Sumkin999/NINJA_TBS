@@ -16,6 +16,7 @@ namespace Assets.Scripts.GameMechanic.Commands
         public float Damage = 10;
         public float TimeToActivateTrigger = 0.35f;
         public float TimeToDeactivateTrigger = 0.6f;
+        public float RecoverStaminaOnHit = 0f;
 
 
         public AttackCommand(float direction, string animatorTrigger, GameUnit target)
@@ -121,6 +122,7 @@ namespace Assets.Scripts.GameMechanic.Commands
         public override void OnWeaponnTriggeredEnemy(GameUnit enemy)
         {
             enemy.DealDamage(Damage);
+            Target.RecoverStamina(RecoverStaminaOnHit);
             UnitCommandController unitCommandController = enemy.GetComponent<UnitCommandController>();
             unitCommandController.TryToApplyCommand(new HitCommand(enemy));
         }

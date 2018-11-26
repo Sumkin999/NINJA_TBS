@@ -464,6 +464,7 @@ MonoBehaviour:
   State: 0
   CommandButton: {fileID: 0}
   UnpauseOnTargetSelected: 0
+  StaminaCost: 0
 --- !u!1 &500303859
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +728,7 @@ MonoBehaviour:
   State: 0
   CommandButton: {fileID: 1373171204}
   UnpauseOnTargetSelected: 0
+  StaminaCost: 15
 --- !u!4 &812828521
 Transform:
   m_ObjectHideFlags: 0
@@ -1224,6 +1226,7 @@ MonoBehaviour:
   State: 0
   CommandButton: {fileID: 0}
   UnpauseOnTargetSelected: 0
+  StaminaCost: 0
 --- !u!1 &1151238635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,6 +1537,7 @@ MonoBehaviour:
   State: 0
   CommandButton: {fileID: 1156737805}
   UnpauseOnTargetSelected: 0
+  StaminaCost: 0
   Destination: {x: 0, y: 0, z: 0}
 --- !u!1 &1321743315
 GameObject:
@@ -2130,6 +2134,7 @@ MonoBehaviour:
   State: 0
   CommandButton: {fileID: 1517331285}
   UnpauseOnTargetSelected: 0
+  StaminaCost: 10
 --- !u!1 &1630777003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,7 +2264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.06274509, g: 0.47967246, b: 0.78431374, a: 1}
+  m_Color: {r: 0.9339623, g: 0.8472723, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2410,6 +2415,7 @@ MonoBehaviour:
   State: 0
   CommandButton: {fileID: 0}
   UnpauseOnTargetSelected: 0
+  StaminaCost: 0
 --- !u!114 &1938516238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114218992910842902, guid: 0c5eb472b4e4c96499423980df157d4b,
