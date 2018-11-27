@@ -23,7 +23,7 @@ namespace Assets.Scripts.GameMechanic
 
         public float Stamina = 100;
         public float MaxStamina;
-        public float StaninaRecovery = 5;
+        public float StaninaRecovery = 3;
 
         public bool IsMoving { get; private set; }
 
