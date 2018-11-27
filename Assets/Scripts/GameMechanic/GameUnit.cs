@@ -15,8 +15,7 @@ namespace Assets.Scripts.GameMechanic
         public GameUnit Target;
         public WeaponTrigger WeaponTrigger;
 
-        //Govnokod
-        public UnitSound UnitSound;
+        
 
         public float Health = 100;
         public float MaxHealth;
