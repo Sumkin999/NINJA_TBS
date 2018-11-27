@@ -11,39 +11,70 @@ namespace Assets.Scripts.GameMechanic
     {
         public GameUnit Unit;
 
-        public SoundComponent WalkSound;
+        public Animator Animator;
+
+        public SoundComponent RightStepSound;
+        public SoundComponent LeftStepSound;
         public SoundComponent SwordHitSound;
-
-        private float _sinceStopTimer = 0;
-        public void Update()
-        {
-            
-            if (Unit.IsMoving)
-            {
-                if (!WalkSound.IsSoundPlaying)
-                {
-                    WalkSound.Play();
-                }
-                _sinceStopTimer = 0;
-            }
-            else
-            {
-                _sinceStopTimer += Time.deltaTime;
-
-                if (_sinceStopTimer>0.15f)
-                {
-                    if (WalkSound.IsSoundPlaying)
-                    {
-                        WalkSound.Stop();
-                    }
-                }
-                
-            }
-        }
+        public SoundComponent RollWindSound;
+        public SoundComponent RollGroundSound;
+        public SoundComponent FallOnKneesSound;
+        public SoundComponent FallOnGroundSound;
+        public SoundComponent HitSoundSoundComponent;
 
         public void SwordWindSoundPlay()
         {
             SwordHitSound.Play();
         }
+
+        public void RightLegStepSoundPlay()
+        {
+            RightStepSound.Play();
+        }
+
+        public void LeftLegStepSoundPlay()
+        {
+            LeftStepSound.Play();
+        }
+
+        public void StepStopSoundPlay()
+        {
+            LeftStepSound.Stop();
+            RightStepSound.Stop();
+            if (Animator==null)
+            {
+                return;
+            }
+            Animator.SetFloat("Move", 0);
+            Animator.SetFloat("Strafe", 0);
+        }
+
+        public void RollWindSoundPlay()
+        {
+            RollWindSound.Play();
+        }
+
+        public void RollGroundSoundPlay()
+        {
+            RollGroundSound.Play();
+        }
+
+        public void FallOnKneesSoundPlay()
+        {
+            FallOnKneesSound.Play();
+        }
+
+        public void FallOnGroundSoundPlay()
+        {
+            FallOnGroundSound.Play();
+        }
+
+        public void HitSoundPlay()
+        {
+            HitSoundSoundComponent.Play();
+        }
+
+
+
     }
 }
