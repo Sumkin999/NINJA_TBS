@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 2a77a4181cad48647bd65abeb548f5fe
+timeCreated: 1487497310
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Block_01
+    100002: Block_02
+    100004: Block_03
+    100006: Brick_small
+    100008: Brick_small_01
+    100010: Brick_small_02
+    100012: Concrete
+    100014: Lattice
+    100016: Lattice_Destroyed
+    100018: Rama_base
+    100020: Rama_Ruin
+    100022: wall_button
+    100024: Window_Destroyed
+    100026: //RootNode
+    100028: Window_plane
+    100030: Window_Ruin
+    400000: Block_01
+    400002: Block_02
+    400004: Block_03
+    400006: Brick_small
+    400008: Brick_small_01
+    400010: Brick_small_02
+    400012: Concrete
+    400014: Lattice
+    400016: Lattice_Destroyed
+    400018: Rama_base
+    400020: Rama_Ruin
+    400022: wall_button
+    400024: Window_Destroyed
+    400026: //RootNode
+    400028: Window_plane
+    400030: Window_Ruin
+    2300000: Block_01
+    2300002: Block_02
+    2300004: Block_03
+    2300006: Brick_small
+    2300008: Brick_small_01
+    2300010: Brick_small_02
+    2300012: Concrete
+    2300014: Lattice
+    2300016: Lattice_Destroyed
+    2300018: Rama_base
+    2300020: Rama_Ruin
+    2300022: wall_button
+    2300024: Window_Destroyed
+    2300026: Window_plane
+    2300028: Window_Ruin
+    3300000: Block_01
+    3300002: Block_02
+    3300004: Block_03
+    3300006: Brick_small
+    3300008: Brick_small_01
+    3300010: Brick_small_02
+    3300012: Concrete
+    3300014: Lattice
+    3300016: Lattice_Destroyed
+    3300018: Rama_base
+    3300020: Rama_Ruin
+    3300022: wall_button
+    3300024: Window_Destroyed
+    3300026: Window_plane
+    3300028: Window_Ruin
+    4300000: Window_Destroyed
+    4300002: Rama_base
+    4300004: Concrete
+    4300006: Window_Ruin
+    4300008: Rama_Ruin
+    4300010: wall_button
+    4300012: Window_plane
+    4300014: Block_02
+    4300016: Block_03
+    4300018: Block_01
+    4300020: Lattice
+    4300022: Brick_small_02
+    4300024: Brick_small_01
+    4300026: Lattice_Destroyed
+    4300028: Brick_small
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
