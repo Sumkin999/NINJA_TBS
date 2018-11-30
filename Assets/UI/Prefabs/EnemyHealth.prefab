@@ -139,6 +139,8 @@ MonoBehaviour:
   Transform: {fileID: 0}
   Slider: {fileID: 114439553462086098}
   Canvas: {fileID: 0}
+  GameUnit: {fileID: 0}
+  ShowDistance: 23
 --- !u!114 &114220836227223024
 MonoBehaviour:
   m_ObjectHideFlags: 1

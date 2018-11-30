@@ -11,6 +11,7 @@ namespace Assets.Scripts.Interface
         public Slider Slider;
         public Canvas Canvas;
         public GameUnit GameUnit;
+        public float ShowDistance = 10;
 
         public void Start()
         {
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Interface
             Vector3 screenPos = UnityEngine.Camera.main.WorldToScreenPoint(OffsetTransform.position);
             Vector2 movePos;
 
-            Slider.gameObject.SetActive(screenPos.z > 0);
+            Slider.gameObject.SetActive((screenPos.z > 0) && (Vector3.Distance(UnityEngine.Camera.main.transform.position,OffsetTransform.position) < ShowDistance));
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(Canvas.transform as RectTransform, screenPos, Canvas.worldCamera, out movePos);
             Transform.position = Canvas.transform.TransformPoint(movePos);
