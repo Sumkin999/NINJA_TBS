@@ -12,6 +12,8 @@ namespace Assets.Scripts.Interface.InterfaceCommand
         public CommandButton CommandButton;
         public bool UnpauseOnTargetSelected;
         public float StaminaCost;
+        public bool ShowSelector;
+        public float SelectorDistance;
 
         public virtual void OnSelectCommand() {}
         public virtual void UpdateSelection() {}
