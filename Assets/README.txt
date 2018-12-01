@@ -1,4 +1,5 @@
-Game for "Game Off 2018" jam hosted by GitHub and Lee Reilly.
+Game for "Game Off 2018" itch.io jam hosted by GitHub and Lee Reilly. 
+https://itch.io/jam/game-off-2018
 
 The game is a hybrid of Action-slasher and tactical combat.
 You also play as hybrid of a turtle and a ninja!
