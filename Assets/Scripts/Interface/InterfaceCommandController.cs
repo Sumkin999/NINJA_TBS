@@ -20,6 +20,8 @@ namespace Assets.Scripts.Interface
 
         public BaseInterfaceCommand SelectedCommand;
 
+        public Projector SelectorProjector;
+
         void Start()
         {
             foreach (var command in AllCommands)
@@ -32,6 +34,8 @@ namespace Assets.Scripts.Interface
 
             Game.InterfaceCommandController = this;
             unitCommandController = Game.PlayerUnit.GetComponent<UnitCommandController>();
+
+            SelectorProjector.transform.parent.SetParent(Game.PlayerUnit.transform);
         }
 
         void Update()
@@ -49,9 +53,25 @@ namespace Assets.Scripts.Interface
                 UpdateCommandButtons();
             }
 
+            SelectorProjector.transform.parent.gameObject.SetActive((SelectedCommand != null) && SelectedCommand.ShowSelector);
+
             if (SelectedCommand != null)
             {
                 SelectedCommand.UpdateSelection();
+
+                Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, 100))
+                {
+                    Vector2 from = new Vector2(Vector3.forward.x, Vector3.forward.z);
+                    Vector2 to = new Vector2((hit.point - Game.PlayerUnit.transform.position).x, (hit.point - Game.PlayerUnit.transform.position).z);
+
+                    SelectorProjector.transform.parent.eulerAngles = new Vector3(0, -Vector2.SignedAngle(from, to), 0);
+                }
+
+                SelectorProjector.aspectRatio = SelectedCommand.SelectorDistance/2;
+                SelectorProjector.transform.localPosition = new Vector3(0,0, SelectedCommand.SelectorDistance / 2);
 
                 if (SelectedCommand.State != CommandState.TargetSelection)
                 {

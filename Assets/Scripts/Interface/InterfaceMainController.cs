@@ -35,6 +35,7 @@ namespace Assets.Scripts.Interface
             UpdateHealthSlider();
             UpdateStaminaSlider();
             PlayerTargetControl();
+            UpdateMoveTarget();
         }
 
         public void OnNewEnemy(UnitView enemy,Canvas canvas)
@@ -63,6 +64,18 @@ namespace Assets.Scripts.Interface
         public void UpdateStaminaSlider()
         {
             StaminSlider.value = Game.PlayerUnit.Stamina / Game.PlayerUnit.MaxStamina;
+        }
+
+        private void UpdateMoveTarget()
+        {
+            if (Vector3.Distance(Game.PlayerUnit.transform.position, Game.PlayerUnit.GetDestination) > 1f)
+            {
+                MoveTargetGameObject.SetActive(true);
+            }
+            else
+            {
+                MoveTargetGameObject.SetActive(false);
+            }
         }
 
         public void PlayerTargetControl()

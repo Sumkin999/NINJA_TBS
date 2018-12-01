@@ -240,7 +240,7 @@ Transform:
   - {fileID: 857424074}
   - {fileID: 1519686790}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385878819
 GameObject:
@@ -465,6 +465,8 @@ MonoBehaviour:
   CommandButton: {fileID: 0}
   UnpauseOnTargetSelected: 0
   StaminaCost: 0
+  ShowSelector: 0
+  SelectorDistance: 0
 --- !u!1 &500303859
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +731,8 @@ MonoBehaviour:
   CommandButton: {fileID: 1373171204}
   UnpauseOnTargetSelected: 0
   StaminaCost: 15
+  ShowSelector: 1
+  SelectorDistance: 3
 --- !u!4 &812828521
 Transform:
   m_ObjectHideFlags: 0
@@ -1247,6 +1251,8 @@ MonoBehaviour:
   CommandButton: {fileID: 0}
   UnpauseOnTargetSelected: 0
   StaminaCost: 0
+  ShowSelector: 0
+  SelectorDistance: 0
 --- !u!1 &1151238635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,6 +1501,7 @@ MonoBehaviour:
   - {fileID: 812828520}
   IdleCommand: {fileID: 1032265920}
   SelectedCommand: {fileID: 0}
+  SelectorProjector: {fileID: 1449283937}
 --- !u!4 &1158132644
 Transform:
   m_ObjectHideFlags: 0
@@ -1558,6 +1565,8 @@ MonoBehaviour:
   CommandButton: {fileID: 1156737805}
   UnpauseOnTargetSelected: 0
   StaminaCost: 0
+  ShowSelector: 1
+  SelectorDistance: 1
   Destination: {x: 0, y: 0, z: 0}
 --- !u!1 &1321743315
 GameObject:
@@ -1781,6 +1790,53 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1373171202}
   m_CullTransparentMesh: 0
+--- !u!1 &1449283936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1449283938}
+  - component: {fileID: 1449283937}
+  m_Layer: 0
+  m_Name: Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!119 &1449283937
+Projector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1449283936}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 100
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 1
+  m_OrthographicSize: 1.5
+  m_Material: {fileID: 2100000, guid: 2e8d2b02f7783ab429380d68126fa729, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!4 &1449283938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1449283936}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1617635082}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1 &1467850089
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2211,37 @@ MonoBehaviour:
   CommandButton: {fileID: 1517331285}
   UnpauseOnTargetSelected: 0
   StaminaCost: 10
+  ShowSelector: 1
+  SelectorDistance: 2
+--- !u!1 &1617635081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1617635082}
+  m_Layer: 0
+  m_Name: ProjectorPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1617635082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1617635081}
+  m_LocalRotation: {x: -0, y: 0.00015833856, z: -0, w: 1}
+  m_LocalPosition: {x: 5.712, y: 1.135, z: -32.038815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1449283938}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630777003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,6 +2523,8 @@ MonoBehaviour:
   CommandButton: {fileID: 0}
   UnpauseOnTargetSelected: 0
   StaminaCost: 0
+  ShowSelector: 0
+  SelectorDistance: 0
 --- !u!114 &1938516238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114218992910842902, guid: 0c5eb472b4e4c96499423980df157d4b,
