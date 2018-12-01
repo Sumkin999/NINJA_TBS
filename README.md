@@ -1,6 +1,6 @@
-# NINJA_TBS
+# NINJA_TBS aka TIME SOULS
 
-Game for "Game Off 2018" itch.io jam hosted by GitHub and Lee Reilly.
+Game for "Game Off 2018" itch.io jam hosted by GitHub and Lee Reilly. 
 https://itch.io/jam/game-off-2018
 
 The game is a hybrid of Action-slasher and tactical combat.
@@ -30,5 +30,8 @@ https://assetstore.unity.com/packages/3d/environments/ruins-constructor-pbr-6494
 Unity ProBuilder
 https://assetstore.unity.com/packages/tools/modeling/probuilder-111418
 ------------------------
+
+
+
 
 
